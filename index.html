@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ | Ø®Ø¨Ø±Ø© ÙØ§ÙÙÙÙØ©.. ÙØªØ§Ø¦Ø¬ ÙÙØ«ÙÙØ©</title>
+  <meta name="description" content="ÙÙØªØ¨ Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ â Ø®Ø¯ÙØ§Øª ÙØ§ÙÙÙÙØ© ÙØªØ®ØµØµØ© ÙÙ Ø§ÙØªØ±Ø§ÙØ¹ ÙØ§ÙØ§Ø³ØªØ´Ø§Ø±Ø§Øª Ø§ÙÙØ§ÙÙÙÙØ© ÙØ¥Ø¯Ø§Ø±Ø© Ø§ÙÙØ¶Ø§ÙØ§ ÙÙ Ø§ÙÙÙÙÙØ© Ø§ÙØ¹Ø±Ø¨ÙØ© Ø§ÙØ³Ø¹ÙØ¯ÙØ©">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C8A84E;
+      --gold-light: #d4b96a;
+      --gold-dark: #a88a3a;
+      --black: #1A1A1A;
+      --black-light: #2a2a2a;
+      --white: #FFFFFF;
+      --beige: #F5F0E1;
+      --gray: #6B6B6B;
+      --gray-light: #9a9a9a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* === NAV === */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0;
+      z-index: 100;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,168,78,0.15);
+      transition: all 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px;
+    }
+    .logo-text {
+      font-size: 1.3rem; font-weight: 700; color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .logo-text span { color: var(--white); font-weight: 400; font-size: 0.85rem; display: block; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none; font-size: 0.95rem;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--black) !important;
+      padding: 8px 24px; border-radius: 6px; font-weight: 700;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); margin: 5px 0; transition: 0.3s; }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: linear-gradient(160deg, var(--black) 0%, var(--black-light) 50%, var(--black) 100%);
+      position: relative;
+      padding: 120px 24px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(200,168,78,0.06) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    /* Scale icon */
+    .scale-icon {
+      width: 80px; height: 80px; margin: 0 auto 32px;
+      opacity: 0.9;
+    }
+    .scale-icon svg { width: 100%; height: 100%; }
+
+    .hero h1 {
+      font-size: 3rem; font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .hero .subtitle-en {
+      font-size: 1.1rem; color: var(--gray-light);
+      letter-spacing: 2px; margin-bottom: 24px;
+      font-weight: 300;
+    }
+    .hero .tagline {
+      font-size: 1.4rem; color: var(--white);
+      margin-bottom: 40px; font-weight: 300;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--black);
+      padding: 14px 40px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: 1.05rem;
+      transition: all 0.3s;
+      border: 2px solid var(--gold);
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-secondary {
+      background: transparent; color: var(--gold);
+      padding: 14px 40px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: 1.05rem;
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(200,168,78,0.1); }
+
+    /* === SECTIONS === */
+    section { padding: 100px 24px; }
+    .container { max-width: 1200px; margin: auto; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 {
+      font-size: 2.2rem; font-weight: 800; color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-header p { color: var(--gray-light); font-size: 1.1rem; max-width: 600px; margin: auto; }
+    .gold-line {
+      width: 60px; height: 3px; background: var(--gold);
+      margin: 16px auto 0; border-radius: 2px;
+    }
+
+    /* === ABOUT === */
+    .about { background: var(--black-light); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+    }
+    .about-text h3 { font-size: 1.6rem; color: var(--gold); margin-bottom: 20px; font-weight: 700; }
+    .about-text p { color: var(--gray-light); font-size: 1.05rem; margin-bottom: 16px; }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .stat-card {
+      background: var(--black);
+      border: 1px solid rgba(200,168,78,0.2);
+      border-radius: 12px;
+      padding: 28px; text-align: center;
+      transition: all 0.3s;
+    }
+    .stat-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .stat-card .number {
+      font-size: 2.4rem; font-weight: 800; color: var(--gold);
+      display: block;
+    }
+    .stat-card .label { color: var(--gray-light); font-size: 0.95rem; margin-top: 4px; }
+
+    /* === SERVICES === */
+    .services { background: var(--black); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--black-light);
+      border: 1px solid rgba(200,168,78,0.1);
+      border-radius: 16px;
+      padding: 36px 28px;
+      transition: all 0.4s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 4px; height: 0; background: var(--gold);
+      transition: height 0.4s;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { border-color: rgba(200,168,78,0.3); transform: translateY(-6px); }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(200,168,78,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    .service-card h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 12px; font-weight: 700; }
+    .service-card p { color: var(--gray-light); font-size: 0.95rem; line-height: 1.7; }
+
+    /* === LAWYER (About the Lawyer) === */
+    .lawyer { background: var(--black-light); }
+    .lawyer-content {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 50px; align-items: start;
+    }
+    .lawyer-photo {
+      background: linear-gradient(135deg, rgba(200,168,78,0.15), rgba(200,168,78,0.05));
+      border: 2px solid rgba(200,168,78,0.2);
+      border-radius: 20px;
+      padding: 40px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 280px;
+    }
+    .lawyer-photo .initials {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 2.2rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .lawyer-photo .name { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+    .lawyer-photo .title { color: var(--gray-light); font-size: 0.95rem; margin-top: 4px; }
+    .lawyer-details h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 16px; }
+    .lawyer-details p { color: var(--gray-light); font-size: 1.05rem; margin-bottom: 16px; line-height: 1.9; }
+    .qualifications { list-style: none; margin-top: 20px; }
+    .qualifications li {
+      color: var(--gray-light); padding: 8px 0;
+      padding-right: 28px; position: relative;
+      font-size: 1rem;
+    }
+    .qualifications li::before {
+      content: 'â¬§'; color: var(--gold); position: absolute;
+      right: 0; font-size: 0.9rem;
+    }
+
+    /* === CONSULTATION FORM === */
+    .consultation { background: var(--black); }
+    .form-wrapper {
+      max-width: 700px; margin: auto;
+      background: var(--black-light);
+      border: 1px solid rgba(200,168,78,0.15);
+      border-radius: 20px;
+      padding: 48px 40px;
+    }
+    .form-group { margin-bottom: 24px; }
+    .form-group label {
+      display: block; color: var(--white); font-weight: 500;
+      margin-bottom: 8px; font-size: 0.95rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid rgba(200,168,78,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group select option { background: var(--black); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%; padding: 16px;
+      background: var(--gold); color: var(--black);
+      border: none; border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .btn-submit:hover { background: var(--gold-light); }
+
+    /* === CONTACT === */
+    .contact { background: var(--black-light); }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .contact-card {
+      background: var(--black);
+      border: 1px solid rgba(200,168,78,0.1);
+      border-radius: 16px;
+      padding: 36px; text-align: center;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .contact-icon {
+      width: 56px; height: 56px;
+      background: rgba(200,168,78,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 1.4rem;
+    }
+    .contact-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 8px; }
+    .contact-card p { color: var(--gray-light); font-size: 0.95rem; }
+    .contact-card a { color: var(--gold); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* === FOOTER === */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(200,168,78,0.1);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo { font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    footer p { color: var(--gray); font-size: 0.9rem; }
+    .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 24px; }
+    .footer-links a { color: var(--gray-light); text-decoration: none; font-size: 0.9rem; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-links.active {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; right: 0; left: 0;
+        background: rgba(26,26,26,0.98);
+        padding: 20px 24px; gap: 16px;
+        border-bottom: 1px solid rgba(200,168,78,0.15);
+      }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.15rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .lawyer-content { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-wrapper { padding: 32px 24px; }
+    }
+
+    /* === ANIMATIONS === */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo-text">
+        Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ
+        <span>Alruwaimi Law Firm</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Ø¹Ù Ø§ÙÙÙØªØ¨</a></li>
+        <li><a href="#services">Ø®Ø¯ÙØ§ØªÙØ§</a></li>
+        <li><a href="#lawyer">Ø§ÙÙØ­Ø§ÙÙØ©</a></li>
+        <li><a href="#consultation">Ø·ÙØ¨ Ø§Ø³ØªØ´Ø§Ø±Ø©</a></li>
+        <li><a href="#contact" class="nav-cta">ØªÙØ§ØµÙ ÙØ¹ÙØ§</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="scale-icon">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 L50 72" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 28 L80 28" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 28 L10 52 Q20 62 30 52 Z" stroke="#C8A84E" stroke-width="2" fill="rgba(200,168,78,0.15)"/>
+          <path d="M80 28 L70 52 Q80 62 90 52 Z" stroke="#C8A84E" stroke-width="2" fill="rgba(200,168,78,0.15)"/>
+          <path d="M35 72 L65 72" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
+          <path d="M30 72 L30 80 L70 80 L70 72" stroke="#C8A84E" stroke-width="2.5" fill="rgba(200,168,78,0.1)" stroke-linecap="round"/>
+          <circle cx="50" cy="28" r="5" fill="#C8A84E" opacity="0.8"/>
+        </svg>
+      </div>
+      <h1>Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ</h1>
+      <p class="subtitle-en">ALRUWAIMI LAW FIRM</p>
+      <p class="tagline">Ø®Ø¨Ø±Ø© ÙØ§ÙÙÙÙØ©.. ÙØªØ§Ø¦Ø¬ ÙÙØ«ÙÙØ©</p>
+      <div class="hero-buttons">
+        <a href="#consultation" class="btn-primary">Ø§Ø·ÙØ¨ Ø§Ø³ØªØ´Ø§Ø±Ø©</a>
+        <a href="#services" class="btn-secondary">Ø®Ø¯ÙØ§ØªÙØ§</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <h3>Ø¹Ù Ø§ÙÙÙØªØ¨</h3>
+          <p>ÙÙØªØ¨ Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ â ÙÙØªØ¨ ÙØ­Ø§ÙØ§Ø© Ø³Ø¹ÙØ¯Ù ÙØªØ®ØµØµ ÙÙ Ø§ÙØªØ±Ø§ÙØ¹ Ø£ÙØ§Ù Ø§ÙÙØ­Ø§ÙÙ Ø§ÙØ³Ø¹ÙØ¯ÙØ© Ø¨ÙØ®ØªÙÙ Ø¯Ø±Ø¬Ø§ØªÙØ§Ø ÙØªÙØ¯ÙÙ Ø§ÙØ§Ø³ØªØ´Ø§Ø±Ø§Øª Ø§ÙÙØ§ÙÙÙÙØ© Ø§ÙÙØªØ®ØµØµØ©Ø ÙØ¥Ø¯Ø§Ø±Ø© ÙÙÙØ§Øª Ø§ÙØ¹ÙÙØ§Ø¡ ÙØ§ÙÙÙÙÙÙÙ Ø¨Ø§Ø­ØªØ±Ø§ÙÙØ© Ø¹Ø§ÙÙØ©.</p>
+          <p>ÙØ³Ø¹Ù ÙØ­ÙØ§ÙØ© Ø­ÙÙÙ ÙÙÙÙÙÙØ§ Ø¨Ø£Ø¹ÙÙ ÙØ¹Ø§ÙÙØ± Ø§ÙÙÙÙÙØ© ÙØ§ÙØ¯ÙØ©Ø ÙØ¹ Ø§ÙØ§ÙØªØ²Ø§Ù Ø§ÙÙØ§ÙÙ Ø¨Ø§ÙØ£ÙØ¸ÙØ© ÙØ§ÙÙÙØ§Ø¦Ø­ Ø§ÙØ³Ø¹ÙØ¯ÙØ© ÙØ§ÙØ´Ø±ÙØ¹Ø© Ø§ÙØ¥Ø³ÙØ§ÙÙØ©.</p>
+        </div>
+        <div class="about-stats fade-up">
+          <div class="stat-card">
+            <span class="number">Ù¦+</span>
+            <span class="label">ÙØ¬Ø§ÙØ§Øª ÙØ§ÙÙÙÙØ©</span>
+          </div>
+          <div class="stat-card">
+            <span class="number">Ù£</span>
+            <span class="label">Ø¯Ø±Ø¬Ø§Øª ØªØ±Ø§ÙØ¹</span>
+          </div>
+          <div class="stat-card">
+            <span class="number">Ù¢Ù¤/Ù§</span>
+            <span class="label">ÙØªØ§Ø­ÙÙ ÙØ®Ø¯ÙØ§ÙÙ</span>
+          </div>
+          <div class="stat-card">
+            <span class="number">Ù¡Ù Ù Ùª</span>
+            <span class="label">Ø§ÙØªØ²Ø§Ù ÙØ³Ø±ÙØ©</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Ø®Ø¯ÙØ§ØªÙØ§ Ø§ÙÙØ§ÙÙÙÙØ©</h2>
+        <p>ÙÙØ¯Ù ÙØ¬ÙÙØ¹Ø© Ø´Ø§ÙÙØ© ÙÙ Ø§ÙØ®Ø¯ÙØ§Øª Ø§ÙÙØ§ÙÙÙÙØ© Ø§ÙÙØªØ®ØµØµØ© ÙØ­ÙØ§ÙØ© Ø­ÙÙÙÙÙ</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">âï¸</div>
+          <h3>Ø§ÙÙØ¶Ø§ÙØ§ Ø§ÙØªØ¬Ø§Ø±ÙØ©</h3>
+          <p>Ø§ÙØªØ±Ø§ÙØ¹ ÙÙ ÙÙØ§Ø²Ø¹Ø§Øª Ø§ÙØ´Ø±ÙØ§Øª ÙØ§ÙØ¹ÙÙØ¯ Ø§ÙØªØ¬Ø§Ø±ÙØ©Ø ÙØªØ£Ø³ÙØ³ Ø§ÙØ´Ø±ÙØ§ØªØ ÙØ§ÙØªØµÙÙØ©Ø ÙØ­ÙØ§ÙØ© Ø§ÙØ­ÙÙÙ Ø§ÙØªØ¬Ø§Ø±ÙØ© Ø£ÙØ§Ù Ø§ÙÙØ­Ø§ÙÙ Ø§ÙØªØ¬Ø§Ø±ÙØ©.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">ð</div>
+          <h3>ÙØ¶Ø§ÙØ§ Ø§ÙØ¹ÙÙ</h3>
+          <p>Ø­ÙØ§ÙØ© Ø­ÙÙÙ Ø§ÙØ¹ÙØ§Ù ÙØ£ØµØ­Ø§Ø¨ Ø§ÙØ¹ÙÙØ ÙØ¶Ø§ÙØ§ Ø§ÙÙØµÙ Ø§ÙØªØ¹Ø³ÙÙØ ÙÙØ§ÙØ£Ø© ÙÙØ§ÙØ© Ø§ÙØ®Ø¯ÙØ©Ø ÙØ§ÙÙÙØ§Ø²Ø¹Ø§Øª Ø§ÙØ¹ÙØ§ÙÙØ© ÙÙÙ ÙØ¸Ø§Ù Ø§ÙØ¹ÙÙ Ø§ÙØ³Ø¹ÙØ¯Ù.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">ð¨âð©âð§âð¦</div>
+          <h3>Ø§ÙØ£Ø­ÙØ§Ù Ø§ÙØ´Ø®ØµÙØ©</h3>
+          <p>ÙØ¶Ø§ÙØ§ Ø§ÙØ·ÙØ§Ù ÙØ§ÙØ®ÙØ¹Ø Ø§ÙØ­Ø¶Ø§ÙØ©Ø Ø§ÙÙÙÙØ©Ø Ø§ÙØ²ÙØ§Ø±Ø©Ø Ø§ÙÙÙØ±Ø§Ø«Ø ÙØ¬ÙÙØ¹ Ø§ÙÙØ³Ø§Ø¦Ù Ø§ÙØ£Ø³Ø±ÙØ© ÙÙÙ ÙØ¸Ø§Ù Ø§ÙØ£Ø­ÙØ§Ù Ø§ÙØ´Ø®ØµÙØ©.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">ð¢</div>
+          <h3>Ø§ÙÙØ¶Ø§ÙØ§ Ø§ÙØ¹ÙØ§Ø±ÙØ©</h3>
+          <p>ÙÙØ§Ø²Ø¹Ø§Øª Ø§ÙØ¨ÙØ¹ ÙØ§ÙØ´Ø±Ø§Ø¡Ø Ø¹ÙÙØ¯ Ø§ÙØ¥ÙØ¬Ø§Ø±Ø Ø¥Ø®ÙØ§Ø¡ Ø§ÙØ¹ÙØ§Ø±Ø Ø§ÙØªØ³Ø¬ÙÙ Ø§ÙØ¹ÙÙÙØ ÙØ­ÙØ§ÙØ© Ø§ÙÙÙÙÙØ© Ø§ÙØ¹ÙØ§Ø±ÙØ©.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">ð</div>
+          <h3>Ø§ÙÙØ¶Ø§ÙØ§ Ø§ÙØ¬ÙØ§Ø¦ÙØ©</h3>
+          <p>Ø§ÙØ¯ÙØ§Ø¹ ÙØ§ÙØªØ±Ø§ÙØ¹ ÙÙ Ø§ÙÙØ¶Ø§ÙØ§ Ø§ÙØ¬Ø²Ø§Ø¦ÙØ© Ø¨ÙØ®ØªÙÙ Ø£ÙÙØ§Ø¹ÙØ§Ø ÙØ­ÙØ§ÙØ© Ø­ÙÙÙ Ø§ÙÙØªÙÙÙÙ ÙØ§ÙÙØ¬ÙÙ Ø¹ÙÙÙÙ ÙÙÙ ÙØ¸Ø§Ù Ø§ÙØ¥Ø¬Ø±Ø§Ø¡Ø§Øª Ø§ÙØ¬Ø²Ø§Ø¦ÙØ©.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">ð</div>
+          <h3>Ø§ÙØªÙÙÙØ° ÙØ§ÙØªÙØ«ÙÙ</h3>
+          <p>ØªÙÙÙØ° Ø§ÙØ£Ø­ÙØ§Ù Ø§ÙÙØ¶Ø§Ø¦ÙØ©Ø Ø±ÙØ¹ ÙØ¥ÙÙØ§Ù Ø¥ÙÙØ§Ù Ø§ÙØ®Ø¯ÙØ§ØªØ ØµÙØ§ØºØ© Ø§ÙØ¹ÙÙØ¯ ÙØªÙØ«ÙÙÙØ§Ø ÙØ§ÙØªÙØ«ÙÙ Ø£ÙØ§Ù ÙØ­Ø§ÙÙ Ø§ÙØªÙÙÙØ°.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAWYER -->
+  <section class="lawyer" id="lawyer">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Ø§ÙÙØ­Ø§ÙÙØ©</h2>
+        <p>ØªØ¹Ø±ÙÙ Ø¹ÙÙ Ø§ÙÙØ­Ø§ÙÙØ© Ø§ÙÙØ¤Ø³Ø³Ø© ÙÙÙÙØªØ¨</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="lawyer-content fade-up">
+        <div class="lawyer-photo">
+          <div class="initials">Ø¥.Ø±</div>
+          <div class="name">Ø£. Ø§Ø¨ØªØ³Ø§Ù Ø§ÙØ±ÙÙÙÙ</div>
+          <div class="title">ÙØ­Ø§ÙÙØ© ÙÙØ³ØªØ´Ø§Ø±Ø© ÙØ§ÙÙÙÙØ©</div>
+        </div>
+        <div class="lawyer-details">
+          <h3>Ø£. Ø§Ø¨ØªØ³Ø§Ù Ø§ÙØ±ÙÙÙÙ</h3>
+          <p>ÙØ­Ø§ÙÙØ© Ø³Ø¹ÙØ¯ÙØ© ÙØ±Ø®ØµØ© ÙÙØ¤Ø³Ø³Ø© ÙÙØªØ¨ Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ. ØªØªÙÙØ² Ø¨Ø®Ø¨Ø±Ø© ÙØªØ®ØµØµØ© ÙÙ Ø§ÙØªØ±Ø§ÙØ¹ Ø£ÙØ§Ù Ø§ÙÙØ­Ø§ÙÙ Ø§ÙØ³Ø¹ÙØ¯ÙØ© Ø¨ÙØ®ØªÙÙ Ø¯Ø±Ø¬Ø§ØªÙØ§Ø ÙØ¹ Ø§ÙØªØ²Ø§Ù ØªØ§Ù Ø¨ØªØ­ÙÙÙ Ø£ÙØ¶Ù Ø§ÙÙØªØ§Ø¦Ø¬ ÙÙÙÙÙÙÙØ§.</p>
+          <p>ØªØ¤ÙÙ Ø¨Ø£Ù Ø§ÙØ¹Ø¯Ø§ÙØ© Ø­Ù ÙÙØ¬ÙÙØ¹Ø ÙØªØ³Ø¹Ù ÙØªÙØ¯ÙÙ Ø®Ø¯ÙØ§Øª ÙØ§ÙÙÙÙØ© Ø¹Ø§ÙÙØ© Ø§ÙØ¬ÙØ¯Ø© ØªØ¬ÙØ¹ Ø¨ÙÙ Ø§ÙÙÙÙÙØ© ÙØ§ÙÙØ±Ø¨ ÙÙ Ø§ÙØ¹ÙÙÙ.</p>
+          <ul class="qualifications">
+            <li>ÙØ­Ø§ÙÙØ© ÙØ±Ø®ØµØ© ÙÙ ÙØ²Ø§Ø±Ø© Ø§ÙØ¹Ø¯Ù</li>
+            <li>Ø§ÙØªØ±Ø§ÙØ¹ Ø£ÙØ§Ù Ø¬ÙÙØ¹ Ø¯Ø±Ø¬Ø§Øª Ø§ÙØªÙØ§Ø¶Ù</li>
+            <li>ÙØªØ®ØµØµØ© ÙÙ Ø§ÙÙØ¶Ø§ÙØ§ Ø§ÙØªØ¬Ø§Ø±ÙØ© ÙØ§ÙØ¹ÙØ§ÙÙØ© ÙØ§ÙØ£Ø³Ø±ÙØ©</li>
+            <li>Ø®Ø¨Ø±Ø© ÙÙ ØµÙØ§ØºØ© Ø§ÙØ¹ÙÙØ¯ ÙØ§ÙØ§Ø³ØªØ´Ø§Ø±Ø§Øª Ø§ÙÙØ§ÙÙÙÙØ©</li>
+            <li>Ø¹Ø¶Ù Ø§ÙÙÙØ¦Ø© Ø§ÙØ³Ø¹ÙØ¯ÙØ© ÙÙÙØ­Ø§ÙÙÙ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTATION FORM -->
+  <section class="consultation" id="consultation">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>Ø§Ø·ÙØ¨ Ø§Ø³ØªØ´Ø§Ø±Ø© ÙØ§ÙÙÙÙØ©</h2>
+        <p>ØªÙØ§ØµÙ ÙØ¹ÙØ§ ÙØ³ÙØ¹Ø§ÙØ¯ Ø§ÙØ§ØªØµØ§Ù Ø¨Ù ÙÙ Ø£ÙØ±Ø¨ ÙÙØª</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="form-wrapper fade-up">
+        <form id="consultForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ø§ÙØ§Ø³Ù Ø§ÙÙØ§ÙÙ</label>
+              <input type="text" placeholder="Ø£Ø¯Ø®Ù Ø§Ø³ÙÙ Ø§ÙÙØ§ÙÙ" required>
+            </div>
+            <div class="form-group">
+              <label>Ø±ÙÙ Ø§ÙØ¬ÙØ§Ù</label>
+              <input type="tel" placeholder="05XXXXXXXX" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ø§ÙØ¨Ø±ÙØ¯ Ø§ÙØ¥ÙÙØªØ±ÙÙÙ</label>
+            <input type="email" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label>ÙÙØ¹ Ø§ÙÙØ¶ÙØ©</label>
+            <select required>
+              <option value="" disabled selected>Ø§Ø®ØªØ± ÙÙØ¹ Ø§ÙÙØ¶ÙØ©</option>
+              <option>ÙØ¶ÙØ© ØªØ¬Ø§Ø±ÙØ©</option>
+              <option>ÙØ¶ÙØ© Ø¹ÙØ§ÙÙØ©</option>
+              <option>Ø£Ø­ÙØ§Ù Ø´Ø®ØµÙØ©</option>
+              <option>ÙØ¶ÙØ© Ø¹ÙØ§Ø±ÙØ©</option>
+              <option>ÙØ¶ÙØ© Ø¬ÙØ§Ø¦ÙØ©</option>
+              <option>ØªÙÙÙØ° Ø£Ø­ÙØ§Ù</option>
+              <option>ØµÙØ§ØºØ© Ø¹ÙÙØ¯</option>
+              <option>Ø§Ø³ØªØ´Ø§Ø±Ø© ÙØ§ÙÙÙÙØ© Ø¹Ø§ÙØ©</option>
+              <option>Ø£Ø®Ø±Ù</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ØªÙØ§ØµÙÙ Ø§ÙØ§Ø³ØªØ´Ø§Ø±Ø©</label>
+            <textarea placeholder="Ø§Ø´Ø±Ø­ ÙÙØ§ ÙØ¶ÙØªÙ Ø£Ù Ø§Ø³ØªÙØ³Ø§Ø±Ù Ø¨Ø´ÙÙ ÙØ®ØªØµØ±..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Ø¥Ø±Ø³Ø§Ù Ø·ÙØ¨ Ø§ÙØ§Ø³ØªØ´Ø§Ø±Ø©</button>
+        </form>
+        <div id="formSuccess" style="display:none; text-align:center; padding:40px 0;">
+          <div style="font-size:3rem; margin-bottom:16px;">â</div>
+          <h3 style="color:var(--gold); font-size:1.4rem; margin-bottom:8px;">ØªÙ Ø¥Ø±Ø³Ø§Ù Ø·ÙØ¨Ù Ø¨ÙØ¬Ø§Ø­</h3>
+          <p style="color:var(--gray-light);">Ø³ÙØªÙØ§ØµÙ ÙØ¹Ù ÙÙ Ø£ÙØ±Ø¨ ÙÙØª ÙÙÙÙ Ø¨Ø¥Ø°Ù Ø§ÙÙÙ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>ØªÙØ§ØµÙ ÙØ¹ÙØ§</h2>
+        <p>ÙØ³Ø¹Ø¯ Ø¨Ø®Ø¯ÙØªÙÙ ÙØ§ÙØ¥Ø¬Ø§Ø¨Ø© Ø¹ÙÙ Ø§Ø³ØªÙØ³Ø§Ø±Ø§ØªÙÙ</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="contact-grid fade-up">
+        <div class="contact-card">
+          <div class="contact-icon">ð±</div>
+          <h3>Ø§ÙØ¬ÙØ§Ù</h3>
+          <p><a href="tel:+966XXXXXXXXX" dir="ltr">+966 XX XXX XXXX</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">âï¸</div>
+          <h3>Ø§ÙØ¨Ø±ÙØ¯ Ø§ÙØ¥ÙÙØªØ±ÙÙÙ</h3>
+          <p><a href="mailto:info@alruwaimi-law.com">info@alruwaimi-law.com</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">ð</div>
+          <h3>Ø§ÙÙÙÙØ¹</h3>
+          <p>Ø§ÙÙÙÙÙØ© Ø§ÙØ¹Ø±Ø¨ÙØ© Ø§ÙØ³Ø¹ÙØ¯ÙØ©</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ</div>
+    <p>Ø®Ø¨Ø±Ø© ÙØ§ÙÙÙÙØ©.. ÙØªØ§Ø¦Ø¬ ÙÙØ«ÙÙØ©</p>
+    <p style="margin-top:12px;">Ø¬ÙÙØ¹ Ø§ÙØ­ÙÙÙ ÙØ­ÙÙØ¸Ø© Â© Ù¢Ù Ù¢Ù¦ â ÙÙØªØ¨ Ø§ÙØ±ÙÙÙÙ ÙÙÙØ­Ø§ÙØ§Ø© ÙØ§ÙØªÙØ«ÙÙ</p>
+    <div class="footer-links">
+      <a href="#about">Ø¹Ù Ø§ÙÙÙØªØ¨</a>
+      <a href="#services">Ø®Ø¯ÙØ§ØªÙØ§</a>
+      <a href="#lawyer">Ø§ÙÙØ­Ø§ÙÙØ©</a>
+      <a href="#contact">ØªÙØ§ØµÙ ÙØ¹ÙØ§</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('consultForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.borderBottomColor = window.scrollY > 50
+        ? 'rgba(200,168,78,0.3)' : 'rgba(200,168,78,0.15)';
+    });
+  </script>
+
+</body>
+</html>
