@@ -5,6 +5,7 @@ export default {
     if (contentType && contentType.includes('text/html')) {
       const newHeaders = new Headers(response.headers);
       newHeaders.set('Content-Type', 'text/html; charset=UTF-8');
+      newHeaders.set('X-Worker-Active', 'true');
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
