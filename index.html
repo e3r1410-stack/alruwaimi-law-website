@@ -285,6 +285,91 @@
       .services-grid { grid-template-columns: 1fr; }
       .pdpl-featured { padding: 36px 24px; }
     }
+
+    /* === LAWYER === */
+    .lawyer {
+      background: var(--charcoal);
+      padding: 100px 24px;
+    }
+    .lawyer .section-header h2 { color: var(--gold); }
+    .lawyer .section-header-line { background: var(--gold); }
+    .lawyer-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px; align-items: start;
+    }
+    .lawyer-photo {
+      text-align: center;
+    }
+    .lawyer-initials {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Amiri', serif;
+      font-size: 2.4rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .lawyer-photo .name {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem; color: var(--gold); font-weight: 700;
+    }
+    .lawyer-photo .title {
+      color: var(--text-on-dark);
+      font-size: 0.9rem; opacity: 0.7; margin-top: 4px;
+    }
+    .lawyer-bio .lead {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem; color: var(--gold);
+      line-height: 1.8; margin-bottom: 24px;
+    }
+    .lawyer-bio p {
+      color: var(--text-on-dark);
+      font-size: 1rem; line-height: 1.9;
+      margin-bottom: 16px; opacity: 0.9;
+    }
+    .qualifications {
+      list-style: none; margin-top: 28px;
+    }
+    .qualifications li {
+      color: var(--text-on-dark);
+      padding: 10px 0; padding-right: 36px;
+      position: relative; font-size: 0.95rem;
+      border-bottom: 1px solid rgba(200,168,78,0.08);
+      opacity: 0.9;
+    }
+    .qualifications li .q-num {
+      color: var(--gold); position: absolute;
+      right: 0; font-family: 'Amiri', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .lawyer-grid { grid-template-columns: 1fr; }
+      .lawyer-photo { margin-bottom: 20px; }
+    }
+
+    /* === CONTACT === */
+    .contact {
+      background: var(--warm-white);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .contact .section-header { margin-bottom: 40px; }
+    .contact-subtitle {
+      color: #6B6B6B; font-size: 1.1rem;
+      margin-top: 16px;
+    }
+    .contact-buttons {
+      display: flex; gap: 20px;
+      justify-content: center; flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .contact-buttons .btn-primary,
+    .contact-buttons .btn-secondary {
+      padding: 16px 48px; font-size: 1.05rem;
+    }
   </style>
 </head>
 <body>
@@ -315,6 +400,52 @@
       <div class="hero-buttons hero-stagger">
         <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
         <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAWYER -->
+  <section class="lawyer" id="lawyer">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>المحامية</h2>
+        <div class="section-header-line"></div>
+      </div>
+      <div class="lawyer-grid">
+        <div class="lawyer-photo fade-up">
+          <div class="lawyer-initials">إ.ر</div>
+          <div class="name">أ. ابتسام الرويمي</div>
+          <div class="title">محامية ومستشارة قانونية</div>
+        </div>
+        <div class="lawyer-bio fade-up">
+          <p class="lead">محامية سعودية تجمع بين الخبرة القانونية والفهم العملي لتحديات الأعمال</p>
+          <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتميز بخبرة متخصصة في الترافع أمام المحاكم السعودية بمختلف درجاتها، مع التزام تام بتحقيق أفضل النتائج لموكليها.</p>
+          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية. تؤمن بأن العدالة حق للجميع، وتسعى لتقديم خدمات قانونية عالية الجودة.</p>
+          <ul class="qualifications">
+            <li><span class="q-num">١</span>محامية مرخصة من وزارة العدل</li>
+            <li><span class="q-num">٢</span>الترافع أمام جميع درجات التقاضي</li>
+            <li><span class="q-num">٣</span>متخصصة في حماية البيانات الشخصية (PDPL)</li>
+            <li><span class="q-num">٤</span>متخصصة في القضايا التجارية والعقارية</li>
+            <li><span class="q-num">٥</span>خبرة في صياغة العقود والاستشارات القانونية</li>
+            <li><span class="q-num">٦</span>مسؤول حماية بيانات خارجي (DPO) للشركات</li>
+            <li><span class="q-num">٧</span>عضو الهيئة السعودية للمحامين</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>تواصل معنا</h2>
+        <div class="section-header-line" style="margin: 12px auto 0;"></div>
+        <p class="contact-subtitle">نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
+      </div>
+      <div class="contact-buttons fade-up">
+        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+        <a href="mailto:info@alruwaimi-law.com" class="btn-secondary">أرسل بريد إلكتروني</a>
       </div>
     </div>
   </section>
