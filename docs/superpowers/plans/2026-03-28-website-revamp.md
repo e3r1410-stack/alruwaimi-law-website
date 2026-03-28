@@ -1,0 +1,979 @@
+# Website Revamp Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Rewrite `index.html` from a generic light template to a premium "Editorial Luxury" design with dark/light rhythm, Amiri serif typography, and conversion-focused layout.
+
+**Architecture:** Single `index.html` file with inline CSS and JS. No build tools, no framework. Google Fonts (Amiri + Tajawal). Deployed via Cloudflare Workers + Assets. Each task replaces/rewrites a section of the file, building up the complete page incrementally.
+
+**Tech Stack:** HTML5, CSS3 (custom properties, grid, flexbox, animations), vanilla JS (IntersectionObserver, scroll events), Google Fonts.
+
+**Spec:** `docs/superpowers/specs/2026-03-28-website-revamp-design.md`
+
+---
+
+### Task 1: Scaffold — Head, CSS Variables, Font Loading
+
+**Files:**
+- Modify: `index.html` (full rewrite starting from line 1)
+
+This task replaces the entire `<head>` and writes the global CSS foundation. Subsequent tasks add sections to `<body>`.
+
+- [ ] **Step 1: Write the `<head>` with fonts and CSS custom properties**
+
+Replace the entire contents of `index.html` with:
+
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الرويمي للمحاماة والتوثيق | خبرة قانونية.. نتائج موثوقة</title>
+  <meta name="description" content="مكتب الرويمي للمحاماة والتوثيق — خدمات قانونية متخصصة في الترافع والاستشارات القانونية وإدارة القضايا في المملكة العربية السعودية">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #1A1A1A;
+      --warm-white: #F5F2EB;
+      --gold: #C8A84E;
+      --gold-light: #D4B96A;
+      --text-on-dark: #E8E2D6;
+      --text-on-light: #2C2C2C;
+      --gold-subtle: rgba(200,168,78,0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-on-light);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-serif {
+      font-family: 'Amiri', serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Fade-up animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero staggered load */
+    .hero-stagger { opacity: 0; transform: translateY(20px); }
+    .hero-stagger.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+  </style>
+```
+
+- [ ] **Step 2: Verify the file is valid so far**
+
+Open `index.html` in a browser. You should see a blank warm-white page with no console errors. Fonts should load (check Network tab for Amiri and Tajawal requests).
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "scaffold: head, CSS variables, Amiri + Tajawal fonts"
+```
+
+---
+
+### Task 2: Navigation
+
+**Files:**
+- Modify: `index.html` (add nav CSS inside `<style>`, add nav HTML to `<body>`)
+
+- [ ] **Step 1: Add nav CSS before the closing `</style>` tag**
+
+```css
+    /* === NAV === */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0;
+      z-index: 100;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gold-subtle);
+      transition: all 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px;
+      transition: padding 0.3s;
+    }
+    nav.scrolled .nav-inner { padding: 12px 24px; }
+    nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .nav-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text-on-dark); text-decoration: none;
+      font-size: 0.9rem; font-weight: 400;
+      transition: color 0.3s;
+      opacity: 0.8;
+    }
+    .nav-links a:hover { color: var(--gold); opacity: 1; }
+    .nav-cta {
+      background: var(--gold); color: var(--charcoal) !important;
+      padding: 8px 24px; border-radius: 6px;
+      font-weight: 700; opacity: 1 !important;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); margin: 5px 0; transition: 0.3s; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-links.active {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; right: 0; left: 0;
+        background: rgba(26,26,26,0.98);
+        padding: 20px 24px; gap: 16px;
+        border-bottom: 1px solid var(--gold-subtle);
+      }
+    }
+```
+
+- [ ] **Step 2: Add nav HTML — open `<body>` and add the nav**
+
+Right after the closing `</style></head>`, add:
+
+```html
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">الرويمي للمحاماة والتوثيق</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#pdpl">حماية البيانات</a></li>
+        <li><a href="#lawyer">المحامية</a></li>
+        <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+```
+
+- [ ] **Step 3: Verify nav renders**
+
+Open in browser. Dark nav bar should be fixed at top with gold firm name and links. Resize to mobile width — hamburger icon should appear and toggle menu.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add fixed dark navigation with mobile hamburger"
+```
+
+---
+
+### Task 3: Hero Section
+
+**Files:**
+- Modify: `index.html` (add hero CSS, add hero HTML after nav)
+
+- [ ] **Step 1: Add hero CSS before `</style>`**
+
+```css
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: var(--charcoal);
+      background-image: radial-gradient(ellipse at center, rgba(200,168,78,0.06) 0%, transparent 70%);
+      position: relative;
+      padding: 120px 24px 80px;
+    }
+    .hero-content { max-width: 750px; }
+    .hero h1 {
+      font-size: 3.5rem; font-weight: 700;
+      color: var(--gold);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .hero .subtitle-en {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.85rem; color: var(--text-on-dark);
+      letter-spacing: 6px; font-weight: 300;
+      opacity: 0.6;
+      margin-bottom: 32px;
+    }
+    .hero-line {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+    .hero .tagline {
+      font-family: 'Amiri', serif;
+      font-size: 1.5rem; color: var(--gold);
+      margin-bottom: 48px; font-weight: 400;
+      opacity: 0.9;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--charcoal);
+      padding: 14px 40px; border-radius: 6px; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      transition: background 0.3s;
+      border: 2px solid var(--gold);
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-secondary {
+      background: transparent; color: var(--gold);
+      padding: 14px 40px; border-radius: 6px; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(200,168,78,0.1); }
+
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.15rem; }
+    }
+```
+
+- [ ] **Step 2: Add hero HTML after the nav closing tag**
+
+```html
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-stagger">الرويمي للمحاماة والتوثيق</h1>
+      <p class="subtitle-en hero-stagger">ALRUWAIMI LAW FIRM</p>
+      <div class="hero-line hero-stagger"></div>
+      <p class="tagline hero-stagger">خبرة قانونية.. نتائج موثوقة</p>
+      <div class="hero-buttons hero-stagger">
+        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
+        <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+      </div>
+    </div>
+  </section>
+```
+
+- [ ] **Step 3: Verify hero renders**
+
+Full viewport dark section, gold firm name large and centered, English subtitle small and tracked, gold line, tagline, two buttons. Primary button should open WhatsApp link.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add editorial hero section with dark theme and staggered elements"
+```
+
+---
+
+### Task 4: Trust Bar
+
+**Files:**
+- Modify: `index.html` (add trust bar CSS, add HTML after hero)
+
+- [ ] **Step 1: Add trust bar CSS before `</style>`**
+
+```css
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--warm-white);
+      padding: 24px;
+      border-bottom: 1px solid var(--gold-subtle);
+    }
+    .trust-bar-inner {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      text-align: center;
+    }
+    .trust-item {
+      color: #6B6B6B; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.3px;
+    }
+    .trust-sep { color: var(--gold); font-size: 0.5rem; }
+```
+
+- [ ] **Step 2: Add trust bar HTML after hero**
+
+```html
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-item">محامية مرخصة من وزارة العدل</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">عضو الهيئة السعودية للمحامين</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">متخصصون في PDPL والامتثال التنظيمي</span>
+    </div>
+  </div>
+```
+
+- [ ] **Step 3: Verify trust bar renders**
+
+Narrow warm-white strip below hero with three credential items separated by gold diamonds. Should wrap gracefully on mobile.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add trust bar with credential signals"
+```
+
+---
+
+### Task 5: Services Section (Asymmetric Grid with Featured PDPL)
+
+**Files:**
+- Modify: `index.html` (add services CSS, add HTML after trust bar)
+
+- [ ] **Step 1: Add services CSS before `</style>`**
+
+```css
+    /* === SERVICES === */
+    .services {
+      background: var(--warm-white);
+      padding: 100px 24px;
+    }
+    .section-header {
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-size: 2.4rem; font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section-header-line {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin-top: 12px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    /* Featured PDPL card */
+    .pdpl-featured {
+      background: var(--charcoal);
+      border-radius: 16px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      border-right: 4px solid var(--gold);
+    }
+    .pdpl-featured h3 {
+      color: var(--gold); font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .pdpl-featured p {
+      color: var(--text-on-dark);
+      font-size: 1rem; line-height: 1.9;
+      margin-bottom: 20px; opacity: 0.9;
+    }
+    .pdpl-bullets {
+      list-style: none; margin-bottom: 24px;
+    }
+    .pdpl-bullets li {
+      color: var(--text-on-dark); padding: 8px 0;
+      padding-right: 24px; position: relative;
+      font-size: 0.95rem;
+    }
+    .pdpl-bullets li::before {
+      content: '—'; color: var(--gold);
+      position: absolute; right: 0;
+    }
+    .pdpl-penalty {
+      display: inline-block;
+      background: rgba(200,168,78,0.15);
+      border: 1px solid var(--gold-subtle);
+      border-radius: 8px;
+      padding: 8px 20px;
+      color: var(--gold); font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .pdpl-featured .btn-primary {
+      display: inline-block;
+    }
+    /* Stacked service cards */
+    .services-stack { display: flex; flex-direction: column; gap: 20px; }
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(200,168,78,0.1);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(200,168,78,0.08);
+    }
+    .service-num {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem; color: var(--gold);
+      opacity: 0.4; font-weight: 700;
+      margin-bottom: 8px; display: block;
+    }
+    .service-card h3 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.1rem; color: var(--text-on-light);
+      margin-bottom: 8px; font-weight: 700;
+    }
+    .service-card p {
+      color: #6B6B6B; font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .pdpl-featured { padding: 36px 24px; }
+    }
+```
+
+- [ ] **Step 2: Add services HTML after trust bar**
+
+```html
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>خدماتنا</h2>
+        <div class="section-header-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="pdpl-featured fade-up" id="pdpl">
+          <h3>حماية البيانات الشخصية — PDPL</h3>
+          <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي.</p>
+          <ul class="pdpl-bullets">
+            <li>تقييم شامل للامتثال وتحليل الفجوات</li>
+            <li>مسؤول حماية بيانات خارجي (DPO)</li>
+            <li>الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة</li>
+          </ul>
+          <div class="pdpl-penalty">غرامة عدم الامتثال تصل إلى ٥ مليون ريال</div>
+          <br>
+          <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
+        </div>
+        <div class="services-stack">
+          <div class="service-card fade-up">
+            <span class="service-num">٠١</span>
+            <h3>القضايا التجارية</h3>
+            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٢</span>
+            <h3>القضايا العقارية</h3>
+            <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٣</span>
+            <h3>التنفيذ والتوثيق</h3>
+            <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+- [ ] **Step 3: Verify services render**
+
+Asymmetric grid: large dark PDPL card on the right (RTL), three stacked cards on the left. Hover on small cards should show gold border + lift. PDPL CTA opens WhatsApp with pre-filled text.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add services section with featured PDPL and asymmetric grid"
+```
+
+---
+
+### Task 6: About the Lawyer Section
+
+**Files:**
+- Modify: `index.html` (add lawyer CSS, add HTML after services)
+
+- [ ] **Step 1: Add lawyer CSS before `</style>`**
+
+```css
+    /* === LAWYER === */
+    .lawyer {
+      background: var(--charcoal);
+      padding: 100px 24px;
+    }
+    .lawyer .section-header h2 { color: var(--gold); }
+    .lawyer .section-header-line { background: var(--gold); }
+    .lawyer-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px; align-items: start;
+    }
+    .lawyer-photo {
+      text-align: center;
+    }
+    .lawyer-initials {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Amiri', serif;
+      font-size: 2.4rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .lawyer-photo .name {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem; color: var(--gold); font-weight: 700;
+    }
+    .lawyer-photo .title {
+      color: var(--text-on-dark);
+      font-size: 0.9rem; opacity: 0.7; margin-top: 4px;
+    }
+    .lawyer-bio .lead {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem; color: var(--gold);
+      line-height: 1.8; margin-bottom: 24px;
+    }
+    .lawyer-bio p {
+      color: var(--text-on-dark);
+      font-size: 1rem; line-height: 1.9;
+      margin-bottom: 16px; opacity: 0.9;
+    }
+    .qualifications {
+      list-style: none; margin-top: 28px;
+    }
+    .qualifications li {
+      color: var(--text-on-dark);
+      padding: 10px 0; padding-right: 36px;
+      position: relative; font-size: 0.95rem;
+      border-bottom: 1px solid rgba(200,168,78,0.08);
+      opacity: 0.9;
+    }
+    .qualifications li .q-num {
+      color: var(--gold); position: absolute;
+      right: 0; font-family: 'Amiri', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .lawyer-grid { grid-template-columns: 1fr; }
+      .lawyer-photo { margin-bottom: 20px; }
+    }
+```
+
+- [ ] **Step 2: Add lawyer HTML after services**
+
+```html
+  <!-- LAWYER -->
+  <section class="lawyer" id="lawyer">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>المحامية</h2>
+        <div class="section-header-line"></div>
+      </div>
+      <div class="lawyer-grid">
+        <div class="lawyer-photo fade-up">
+          <div class="lawyer-initials">إ.ر</div>
+          <div class="name">أ. ابتسام الرويمي</div>
+          <div class="title">محامية ومستشارة قانونية</div>
+        </div>
+        <div class="lawyer-bio fade-up">
+          <p class="lead">محامية سعودية تجمع بين الخبرة القانونية والفهم العملي لتحديات الأعمال</p>
+          <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتميز بخبرة متخصصة في الترافع أمام المحاكم السعودية بمختلف درجاتها، مع التزام تام بتحقيق أفضل النتائج لموكليها.</p>
+          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية. تؤمن بأن العدالة حق للجميع، وتسعى لتقديم خدمات قانونية عالية الجودة.</p>
+          <ul class="qualifications">
+            <li><span class="q-num">١</span>محامية مرخصة من وزارة العدل</li>
+            <li><span class="q-num">٢</span>الترافع أمام جميع درجات التقاضي</li>
+            <li><span class="q-num">٣</span>متخصصة في حماية البيانات الشخصية (PDPL)</li>
+            <li><span class="q-num">٤</span>متخصصة في القضايا التجارية والعقارية</li>
+            <li><span class="q-num">٥</span>خبرة في صياغة العقود والاستشارات القانونية</li>
+            <li><span class="q-num">٦</span>مسؤول حماية بيانات خارجي (DPO) للشركات</li>
+            <li><span class="q-num">٧</span>عضو الهيئة السعودية للمحامين</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+```
+
+- [ ] **Step 3: Verify lawyer section renders**
+
+Dark charcoal background. Gold ring initials circle on the right, bio text on the left. Gold opening statement, warm-white body text, numbered qualifications list.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add lawyer section with dark theme and numbered qualifications"
+```
+
+---
+
+### Task 7: Contact Section
+
+**Files:**
+- Modify: `index.html` (add contact CSS, add HTML after lawyer)
+
+- [ ] **Step 1: Add contact CSS before `</style>`**
+
+```css
+    /* === CONTACT === */
+    .contact {
+      background: var(--warm-white);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .contact .section-header { margin-bottom: 40px; }
+    .contact-subtitle {
+      color: #6B6B6B; font-size: 1.1rem;
+      margin-top: 16px;
+    }
+    .contact-buttons {
+      display: flex; gap: 20px;
+      justify-content: center; flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .contact-buttons .btn-primary,
+    .contact-buttons .btn-secondary {
+      padding: 16px 48px; font-size: 1.05rem;
+    }
+```
+
+- [ ] **Step 2: Add contact HTML after lawyer**
+
+```html
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>تواصل معنا</h2>
+        <div class="section-header-line" style="margin: 12px auto 0;"></div>
+        <p class="contact-subtitle">نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
+      </div>
+      <div class="contact-buttons fade-up">
+        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+        <a href="mailto:info@alruwaimi-law.com" class="btn-secondary">أرسل بريد إلكتروني</a>
+      </div>
+    </div>
+  </section>
+```
+
+- [ ] **Step 3: Verify contact renders**
+
+Centered section on warm-white background. Two large buttons: gold WhatsApp (opens wa.me) and gold outline email (opens mail client).
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add conversion-focused contact section"
+```
+
+---
+
+### Task 8: Footer, Privacy Modal, Floating WhatsApp
+
+**Files:**
+- Modify: `index.html` (add footer/modal/FAB CSS, add HTML, add all JS before `</body>`)
+
+- [ ] **Step 1: Add footer, privacy modal, and floating WhatsApp CSS before `</style>`**
+
+```css
+    /* === FOOTER === */
+    footer {
+      background: var(--charcoal);
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid var(--gold-subtle);
+    }
+    .footer-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    footer p { color: var(--text-on-dark); font-size: 0.85rem; opacity: 0.6; }
+    .footer-links {
+      margin-top: 20px; display: flex;
+      justify-content: center; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-on-dark); text-decoration: none;
+      font-size: 0.85rem; opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+    .footer-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* === PRIVACY MODAL === */
+    .privacy-overlay {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 200; overflow-y: auto;
+      padding: 40px 24px;
+    }
+    .privacy-overlay.active { display: block; }
+    .privacy-content {
+      max-width: 800px; margin: auto;
+      background: var(--charcoal);
+      border: 1px solid var(--gold-subtle);
+      border-radius: 16px;
+      padding: 48px 40px;
+      color: var(--text-on-dark);
+    }
+    .privacy-content h2 {
+      color: var(--gold); font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+    .privacy-content h3 {
+      color: var(--gold); font-size: 1.2rem;
+      margin: 24px 0 12px;
+    }
+    .privacy-content p {
+      font-size: 0.95rem; line-height: 1.9;
+      margin-bottom: 12px; opacity: 0.9;
+    }
+    .privacy-content ul { list-style: none; margin: 8px 0 16px; }
+    .privacy-content li {
+      padding: 4px 0; padding-right: 20px;
+      position: relative; font-size: 0.95rem; opacity: 0.9;
+    }
+    .privacy-content li::before {
+      content: '—'; color: var(--gold);
+      position: absolute; right: 0;
+    }
+    .privacy-close {
+      position: sticky; top: 0; float: left;
+      background: var(--gold); color: var(--charcoal);
+      border: none; width: 36px; height: 36px;
+      border-radius: 50%; font-size: 1.2rem;
+      cursor: pointer; font-weight: 700; z-index: 10;
+    }
+
+    /* === FLOATING WHATSAPP === */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; left: 28px;
+      z-index: 90;
+      width: 56px; height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(200,168,78,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      animation: wa-pulse 2s ease-in-out 1;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(200,168,78,0.4);
+    }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: #FFFFFF; }
+    @keyframes wa-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @media (max-width: 900px) {
+      .privacy-content { padding: 32px 24px; }
+      .whatsapp-float { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+      .whatsapp-float svg { width: 24px; height: 24px; }
+    }
+```
+
+- [ ] **Step 2: Add footer, privacy modal, and floating WhatsApp HTML after contact**
+
+```html
+  <!-- PRIVACY POLICY MODAL -->
+  <div class="privacy-overlay" id="privacyModal">
+    <div class="privacy-content">
+      <button class="privacy-close" onclick="document.getElementById('privacyModal').classList.remove('active')">&times;</button>
+      <h2>سياسة الخصوصية وحماية البيانات الشخصية</h2>
+      <p><strong>آخر تحديث: مارس ٢٠٢٦</strong></p>
+      <p>يلتزم مكتب الرويمي للمحاماة والتوثيق بحماية خصوصية بياناتكم الشخصية وفقاً لنظام حماية البيانات الشخصية الصادر بالمرسوم الملكي رقم (م/19) وتاريخ 1443/2/9هـ ولوائحه التنفيذية.</p>
+
+      <h3>١. البيانات التي نجمعها</h3>
+      <p>نجمع البيانات التالية عند تواصلكم معنا أو استخدامكم لخدماتنا:</p>
+      <ul>
+        <li>الاسم الكامل ومعلومات التواصل (رقم الجوال، البريد الإلكتروني)</li>
+        <li>تفاصيل الاستشارة القانونية المطلوبة</li>
+        <li>بيانات الهوية عند التوكيل (رقم الهوية/الإقامة)</li>
+        <li>بيانات التصفح التقنية (عنوان IP، نوع المتصفح) بشكل مجهول الهوية</li>
+      </ul>
+
+      <h3>٢. أغراض معالجة البيانات</h3>
+      <p>نعالج بياناتكم الشخصية للأغراض التالية حصراً:</p>
+      <ul>
+        <li>تقديم الخدمات القانونية والاستشارات المطلوبة</li>
+        <li>التواصل معكم بشأن استفساراتكم القانونية</li>
+        <li>إدارة ملفات القضايا والتمثيل القانوني</li>
+        <li>الوفاء بالالتزامات النظامية والمهنية</li>
+      </ul>
+
+      <h3>٣. الأساس النظامي للمعالجة</h3>
+      <p>نعالج بياناتكم استناداً إلى المادة (٥) من نظام حماية البيانات الشخصية، وتشمل الأسس:</p>
+      <ul>
+        <li>الموافقة الصريحة عند تقديم طلب الاستشارة</li>
+        <li>تنفيذ العقد المبرم بيننا (عقد التوكيل/الاستشارة)</li>
+        <li>الالتزام بمتطلبات نظامية (نظام المحاماة ولوائحه)</li>
+      </ul>
+
+      <h3>٤. حقوقكم وفق المادة (٤) من النظام</h3>
+      <p>يحق لكم بصفتكم أصحاب بيانات:</p>
+      <ul>
+        <li>الاطلاع على بياناتكم الشخصية المحفوظة لدينا</li>
+        <li>طلب تصحيح البيانات غير الدقيقة أو غير المكتملة</li>
+        <li>طلب إتلاف البيانات عند انتفاء الغرض من جمعها</li>
+        <li>الاعتراض على معالجة البيانات في الحالات المنصوص عليها</li>
+        <li>طلب نقل البيانات إلى جهة أخرى</li>
+      </ul>
+
+      <h3>٥. حماية البيانات وأمنها</h3>
+      <p>نطبق إجراءات تقنية وإدارية مناسبة لحماية بياناتكم من الوصول غير المصرح به أو التعديل أو الإفشاء أو الإتلاف، تشمل التشفير والتحكم في الوصول والمراجعة الدورية.</p>
+
+      <h3>٦. الاحتفاظ بالبيانات</h3>
+      <p>نحتفظ ببياناتكم للمدة اللازمة لتحقيق أغراض المعالجة أو وفقاً لما تقتضيه الأنظمة السعودية، ثم يتم إتلافها بشكل آمن.</p>
+
+      <h3>٧. مشاركة البيانات</h3>
+      <p>لا نشارك بياناتكم مع أطراف ثالثة إلا في الحالات التالية:</p>
+      <ul>
+        <li>بموافقتكم الصريحة</li>
+        <li>لتنفيذ التزام نظامي أو أمر قضائي</li>
+        <li>لحماية مصالحكم الحيوية</li>
+      </ul>
+
+      <h3>٨. التواصل لممارسة حقوقكم</h3>
+      <p>لممارسة أي من حقوقكم المنصوص عليها أعلاه، يرجى التواصل معنا عبر:</p>
+      <ul>
+        <li>البريد الإلكتروني: info@alruwaimi-law.com</li>
+        <li>مع ذكر "طلب بيانات شخصية" في عنوان الرسالة</li>
+      </ul>
+      <p>نلتزم بالرد على طلباتكم خلال المهل النظامية المحددة في نظام حماية البيانات الشخصية ولوائحه التنفيذية.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">الرويمي للمحاماة والتوثيق</div>
+    <p>خبرة قانونية.. نتائج موثوقة</p>
+    <p style="margin-top:12px;">جميع الحقوق محفوظة &copy; ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
+    <div class="footer-links">
+      <a href="#services">خدماتنا</a>
+      <a href="#pdpl">حماية البيانات</a>
+      <a href="#lawyer">المحامية</a>
+      <a href="#contact">تواصل معنا</a>
+      <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('active')">سياسة الخصوصية</a>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/966505557277" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+```
+
+- [ ] **Step 3: Add all JavaScript before `</body>`**
+
+```html
+  <script>
+    // Scroll animations (fade-up)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Hero staggered animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero-stagger').forEach((el, i) => {
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          el.classList.add('visible');
+        }, 200 + i * 150);
+      });
+    });
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+
+</body>
+</html>
+```
+
+- [ ] **Step 4: Verify everything works end to end**
+
+Full page test:
+- Nav: fixed dark, shrinks on scroll, mobile hamburger works
+- Hero: dark, staggered fade-in, WhatsApp button works
+- Trust bar: warm strip with gold diamonds
+- Services: asymmetric grid, PDPL featured, hover on cards
+- Lawyer: dark section, gold ring initials, numbered list
+- Contact: centered buttons, both links work
+- Footer: dark, privacy modal opens/closes
+- Floating WhatsApp: bottom-left, pulse animation, links work
+- Responsive: all sections single-column on mobile
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: add footer, privacy modal, floating WhatsApp, and all JS"
+```
+
+---
+
+### Task 9: Final Polish and Push
+
+**Files:**
+- Modify: `index.html` (minor adjustments if needed)
+
+- [ ] **Step 1: Test complete page in browser at multiple widths**
+
+Check at: 1440px, 1024px, 768px, 375px. Verify all sections render correctly, all links work, all animations fire.
+
+- [ ] **Step 2: Validate HTML**
+
+No unclosed tags, no console errors. Check that the privacy modal content is complete and matches the original.
+
+- [ ] **Step 3: Push to GitHub**
+
+```bash
+git push origin main
+```
+
+This triggers Cloudflare deployment to alruwaimi-law.com.
+
+- [ ] **Step 4: Verify live site**
+
+Visit https://alruwaimi-law.com and confirm the new design is live.
