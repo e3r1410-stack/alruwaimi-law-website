@@ -17,6 +17,7 @@
       --text-on-dark: #E8E2D6;
       --text-on-light: #2C2C2C;
       --gold-subtle: rgba(200,168,78,0.2);
+      --text-muted: #6B6B6B;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -179,7 +180,7 @@
       text-align: center;
     }
     .trust-item {
-      color: #6B6B6B; font-size: 0.85rem;
+      color: var(--text-muted); font-size: 0.85rem;
       font-weight: 500; letter-spacing: 0.3px;
     }
     .trust-sep { color: var(--gold); font-size: 0.5rem; }
@@ -246,7 +247,7 @@
       padding: 8px 20px;
       color: var(--gold); font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 28px;
+      margin-bottom: 28px; margin-top: 4px;
     }
     .pdpl-featured .btn-primary {
       display: inline-block;
@@ -277,7 +278,7 @@
       margin-bottom: 8px; font-weight: 700;
     }
     .service-card p {
-      color: #6B6B6B; font-size: 0.9rem;
+      color: var(--text-muted); font-size: 0.9rem;
       line-height: 1.7;
     }
 
@@ -357,8 +358,9 @@
       text-align: center;
     }
     .contact .section-header { margin-bottom: 40px; }
+    .contact .section-header-line { margin: 12px auto 0; }
     .contact-subtitle {
-      color: #6B6B6B; font-size: 1.1rem;
+      color: var(--text-muted); font-size: 1.1rem;
       margin-top: 16px;
     }
     .contact-buttons {
@@ -384,6 +386,7 @@
       color: var(--gold); margin-bottom: 8px;
     }
     footer p { color: var(--text-on-dark); font-size: 0.85rem; opacity: 0.6; }
+    footer .copyright { margin-top: 12px; }
     .footer-links {
       margin-top: 20px; display: flex;
       justify-content: center; gap: 24px; flex-wrap: wrap;
@@ -483,7 +486,7 @@
         <li><a href="#lawyer">المحامية</a></li>
         <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
       </ul>
-      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
+      <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks" onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',!e);document.getElementById('navLinks').classList.toggle('active')">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -499,6 +502,57 @@
       <div class="hero-buttons hero-stagger">
         <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
         <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-item">محامية مرخصة من وزارة العدل</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">عضو الهيئة السعودية للمحامين</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">متخصصون في PDPL والامتثال التنظيمي</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>خدماتنا</h2>
+        <div class="section-header-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="pdpl-featured fade-up" id="pdpl">
+          <h3>حماية البيانات الشخصية — PDPL</h3>
+          <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي.</p>
+          <ul class="pdpl-bullets">
+            <li>تقييم شامل للامتثال وتحليل الفجوات</li>
+            <li>مسؤول حماية بيانات خارجي (DPO)</li>
+            <li>الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة</li>
+          </ul>
+          <div class="pdpl-penalty">غرامة عدم الامتثال تصل إلى ٥ مليون ريال</div>
+          <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
+        </div>
+        <div class="services-stack">
+          <div class="service-card fade-up">
+            <span class="service-num">٠١</span>
+            <h3>القضايا التجارية</h3>
+            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٢</span>
+            <h3>القضايا العقارية</h3>
+            <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٣</span>
+            <h3>التنفيذ والتوثيق</h3>
+            <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -539,64 +593,12 @@
     <div class="container">
       <div class="section-header fade-up">
         <h2>تواصل معنا</h2>
-        <div class="section-header-line" style="margin: 12px auto 0;"></div>
+        <div class="section-header-line"></div>
         <p class="contact-subtitle">نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
       </div>
       <div class="contact-buttons fade-up">
         <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">تواصل عبر واتساب</a>
         <a href="mailto:info@alruwaimi-law.com" class="btn-secondary">أرسل بريد إلكتروني</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-bar-inner">
-      <span class="trust-item">محامية مرخصة من وزارة العدل</span>
-      <span class="trust-sep">◆</span>
-      <span class="trust-item">عضو الهيئة السعودية للمحامين</span>
-      <span class="trust-sep">◆</span>
-      <span class="trust-item">متخصصون في PDPL والامتثال التنظيمي</span>
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>خدماتنا</h2>
-        <div class="section-header-line"></div>
-      </div>
-      <div class="services-grid">
-        <div class="pdpl-featured fade-up" id="pdpl">
-          <h3>حماية البيانات الشخصية — PDPL</h3>
-          <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي.</p>
-          <ul class="pdpl-bullets">
-            <li>تقييم شامل للامتثال وتحليل الفجوات</li>
-            <li>مسؤول حماية بيانات خارجي (DPO)</li>
-            <li>الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة</li>
-          </ul>
-          <div class="pdpl-penalty">غرامة عدم الامتثال تصل إلى ٥ مليون ريال</div>
-          <br>
-          <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
-        </div>
-        <div class="services-stack">
-          <div class="service-card fade-up">
-            <span class="service-num">٠١</span>
-            <h3>القضايا التجارية</h3>
-            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية.</p>
-          </div>
-          <div class="service-card fade-up">
-            <span class="service-num">٠٢</span>
-            <h3>القضايا العقارية</h3>
-            <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
-          </div>
-          <div class="service-card fade-up">
-            <span class="service-num">٠٣</span>
-            <h3>التنفيذ والتوثيق</h3>
-            <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -673,7 +675,7 @@
   <footer>
     <div class="footer-logo">الرويمي للمحاماة والتوثيق</div>
     <p>خبرة قانونية.. نتائج موثوقة</p>
-    <p style="margin-top:12px;">جميع الحقوق محفوظة &copy; ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
+    <p class="copyright">جميع الحقوق محفوظة &copy; ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
     <div class="footer-links">
       <a href="#services">خدماتنا</a>
       <a href="#pdpl">حماية البيانات</a>
@@ -703,7 +705,7 @@
         setTimeout(() => {
           el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
           el.classList.add('visible');
-        }, 200 + i * 150);
+        }, 200 + i * 100);
       });
     });
 
