@@ -6,471 +6,165 @@
   <title>الرويمي للمحاماة والتوثيق | خبرة قانونية.. نتائج موثوقة</title>
   <meta name="description" content="مكتب الرويمي للمحاماة والتوثيق — خدمات قانونية متخصصة في الترافع والاستشارات القانونية وإدارة القضايا في المملكة العربية السعودية">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-  <style>
-    @font-face {
-      font-family: 'Sakkal Majalla';
-      src: local('Sakkal Majalla'), local('SakkalMajalla');
-      font-weight: normal;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'Sakkal Majalla';
-      src: local('Sakkal Majalla Bold'), local('SakkalMajalla-Bold');
-      font-weight: bold;
-      font-style: normal;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #B8963E;
+      --charcoal: #1A1A1A;
+      --warm-white: #F5F2EB;
+      --gold: #C8A84E;
       --gold-light: #D4B96A;
-      --gold-dark: #9A7B2F;
-      --black: #2C2C2C;
-      --black-light: #F8F6F1;
-      --white: #FFFFFF;
-      --beige: #F0EBE0;
-      --gray: #6B6B6B;
-      --gray-light: #7A7A7A;
+      --text-on-dark: #E8E2D6;
+      --text-on-light: #2C2C2C;
+      --gold-subtle: rgba(200,168,78,0.2);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Sakkal Majalla', 'Tajawal', sans-serif;
-      background: #FDFCFA;
-      color: #2C2C2C;
+      font-family: 'Tajawal', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-on-light);
       line-height: 1.8;
       overflow-x: hidden;
     }
+
+    h1, h2, h3, .font-serif {
+      font-family: 'Amiri', serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Fade-up animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero staggered load */
+    .hero-stagger { opacity: 0; transform: translateY(20px); }
+    .hero-stagger.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
 
     /* === NAV === */
     nav {
       position: fixed; top: 0; right: 0; left: 0;
       z-index: 100;
-      background: rgba(253,252,250,0.97);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(184,150,62,0.12);
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gold-subtle);
       transition: all 0.3s;
     }
     .nav-inner {
       max-width: 1200px; margin: auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 24px;
+      padding: 18px 24px;
+      transition: padding 0.3s;
     }
-    .logo-text {
-      font-size: 1.3rem; font-weight: 700; color: var(--gold);
-      letter-spacing: 0.5px;
-    }
-    .logo-text span { color: var(--white); font-weight: 400; font-size: 0.85rem; display: block; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      color: #4A4A4A; text-decoration: none; font-size: 0.95rem;
-      transition: color 0.3s; position: relative;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold); color: var(--black) !important;
-      padding: 8px 24px; border-radius: 6px; font-weight: 700;
-      transition: all 0.3s;
-    }
-    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
-    .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
-    .menu-toggle span { display: block; width: 24px; height: 2px; background: #2C2C2C; margin: 5px 0; transition: 0.3s; }
-
-    /* === HERO === */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      background: linear-gradient(160deg, #FDFCFA 0%, #F5F0E1 40%, #FDFCFA 100%);
-      position: relative;
-      padding: 120px 24px 80px;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(184,150,62,0.06) 0%, transparent 70%);
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 800px; }
-
-    /* Scale icon */
-    .scale-icon {
-      width: 80px; height: 80px; margin: 0 auto 32px;
-      opacity: 0.9;
-    }
-    .scale-icon svg { width: 100%; height: 100%; }
-
-    .hero h1 {
-      font-size: 3rem; font-weight: 800;
+    nav.scrolled .nav-inner { padding: 12px 24px; }
+    nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .nav-logo {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem; font-weight: 700;
       color: var(--gold);
-      margin-bottom: 8px;
-      line-height: 1.3;
     }
-    .hero .subtitle-en {
-      font-size: 1.1rem; color: #7A7A7A;
-      letter-spacing: 2px; margin-bottom: 24px;
-      font-weight: 300;
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text-on-dark); text-decoration: none;
+      font-size: 0.9rem; font-weight: 400;
+      transition: color 0.3s;
+      opacity: 0.8;
     }
-    .hero .tagline {
-      font-size: 1.4rem; color: #4A4A4A;
-      margin-bottom: 40px; font-weight: 300;
+    .nav-links a:hover { color: var(--gold); opacity: 1; }
+    .nav-cta {
+      background: var(--gold); color: var(--charcoal) !important;
+      padding: 8px 24px; border-radius: 6px;
+      font-weight: 700; opacity: 1 !important;
+      transition: background 0.3s;
     }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gold); color: var(--black);
-      padding: 14px 40px; border-radius: 8px; text-decoration: none;
-      font-weight: 700; font-size: 1.05rem;
-      transition: all 0.3s;
-      border: 2px solid var(--gold);
-    }
-    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
-    .btn-secondary {
-      background: transparent; color: var(--gold);
-      padding: 14px 40px; border-radius: 8px; text-decoration: none;
-      font-weight: 700; font-size: 1.05rem;
-      border: 2px solid var(--gold);
-      transition: all 0.3s;
-    }
-    .btn-secondary:hover { background: rgba(184,150,62,0.08); }
+    .nav-cta:hover { background: var(--gold-light); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); margin: 5px 0; transition: 0.3s; }
 
-    /* === SECTIONS === */
-    section { padding: 100px 24px; }
-    .container { max-width: 1200px; margin: auto; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-header h2 {
-      font-size: 2.2rem; font-weight: 800; color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .section-header p { color: #7A7A7A; font-size: 1.1rem; max-width: 600px; margin: auto; }
-    .gold-line {
-      width: 60px; height: 3px; background: var(--gold);
-      margin: 16px auto 0; border-radius: 2px;
-    }
-
-    /* === ABOUT === */
-    .about { background: #F8F6F1; }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-    }
-    .about-text h3 { font-size: 1.6rem; color: var(--gold); margin-bottom: 20px; font-weight: 700; }
-    .about-text p { color: #5A5A5A; font-size: 1.05rem; margin-bottom: 16px; }
-    .about-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-    }
-    .stat-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(184,150,62,0.15);
-      border-radius: 12px;
-      padding: 28px; text-align: center;
-      transition: all 0.3s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .stat-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 4px 16px rgba(184,150,62,0.1); }
-    .stat-card .number {
-      font-size: 2.4rem; font-weight: 800; color: var(--gold);
-      display: block;
-    }
-    .stat-card .label { color: #7A7A7A; font-size: 0.95rem; margin-top: 4px; }
-
-    /* === SERVICES === */
-    .services { background: #FDFCFA; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .service-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(184,150,62,0.1);
-      border-radius: 16px;
-      padding: 36px 28px;
-      transition: all 0.4s;
-      position: relative; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .service-card::before {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 4px; height: 0; background: var(--gold);
-      transition: height 0.4s;
-    }
-    .service-card:hover::before { height: 100%; }
-    .service-card:hover { border-color: rgba(184,150,62,0.3); transform: translateY(-6px); box-shadow: 0 8px 24px rgba(184,150,62,0.1); }
-    .service-icon {
-      width: 52px; height: 52px;
-      background: rgba(184,150,62,0.08);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-    .service-card h3 { font-size: 1.2rem; color: #2C2C2C; margin-bottom: 12px; font-weight: 700; }
-    .service-card p { color: #6A6A6A; font-size: 0.95rem; line-height: 1.7; }
-
-    /* === PDPL SECTION === */
-    .pdpl { background: #F8F6F1; position: relative; overflow: hidden; }
-    .pdpl::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at top right, rgba(200,168,78,0.04) 0%, transparent 60%);
-    }
-    .pdpl .container { position: relative; z-index: 1; }
-    .pdpl-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 50px; align-items: center;
-    }
-    .pdpl-text h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 800; }
-    .pdpl-text .pdpl-badge {
-      display: inline-block; background: rgba(184,150,62,0.1);
-      border: 1px solid rgba(184,150,62,0.2); border-radius: 20px;
-      padding: 4px 16px; font-size: 0.85rem; color: var(--gold);
-      margin-bottom: 20px; font-weight: 500;
-    }
-    .pdpl-text p { color: #5A5A5A; font-size: 1.05rem; margin-bottom: 16px; line-height: 1.9; }
-    .pdpl-services-list { list-style: none; margin-top: 24px; }
-    .pdpl-services-list li {
-      color: #2C2C2C; padding: 12px 0; padding-right: 36px;
-      position: relative; font-size: 1rem; border-bottom: 1px solid rgba(184,150,62,0.08);
-    }
-    .pdpl-services-list li::before {
-      content: '🛡'; position: absolute; right: 0; font-size: 1rem;
-    }
-    .pdpl-services-list li span { color: #7A7A7A; font-size: 0.9rem; display: block; margin-top: 2px; }
-    .pdpl-cta-box {
-      background: #FFFFFF; border: 1px solid rgba(184,150,62,0.15);
-      border-radius: 20px; padding: 40px; text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-    .pdpl-cta-box .pdpl-icon { font-size: 3.5rem; margin-bottom: 20px; display: block; }
-    .pdpl-cta-box h4 { font-size: 1.3rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; }
-    .pdpl-cta-box p { color: #6A6A6A; font-size: 0.95rem; margin-bottom: 24px; line-height: 1.8; }
-    .pdpl-cta-box .btn-primary { display: inline-block; }
-    .pdpl-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px;
-    }
-    .pdpl-stat {
-      background: #F8F6F1; border-radius: 12px;
-      padding: 16px; text-align: center;
-    }
-    .pdpl-stat .num { font-size: 1.6rem; font-weight: 800; color: var(--gold); display: block; }
-    .pdpl-stat .desc { font-size: 0.8rem; color: #7A7A7A; margin-top: 2px; }
-
-    /* === BLOG SECTION === */
-    .blog { background: #FDFCFA; }
-    .blog-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .blog-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(184,150,62,0.1);
-      border-radius: 16px; overflow: hidden;
-      transition: all 0.4s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .blog-card:hover { border-color: rgba(184,150,62,0.3); transform: translateY(-6px); box-shadow: 0 8px 24px rgba(184,150,62,0.1); }
-    .blog-card-header {
-      background: rgba(184,150,62,0.04);
-      padding: 24px 24px 16px; border-bottom: 1px solid rgba(184,150,62,0.08);
-    }
-    .blog-tag {
-      display: inline-block; background: rgba(184,150,62,0.1);
-      border-radius: 12px; padding: 2px 12px;
-      font-size: 0.75rem; color: var(--gold); margin-bottom: 10px;
-    }
-    .blog-card-header h3 { font-size: 1.1rem; color: #2C2C2C; font-weight: 700; line-height: 1.6; }
-    .blog-card-body { padding: 20px 24px; }
-    .blog-card-body p { color: #6A6A6A; font-size: 0.9rem; line-height: 1.7; }
-    .blog-card-footer {
-      padding: 16px 24px; border-top: 1px solid rgba(200,168,78,0.05);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .blog-date { color: var(--gray); font-size: 0.8rem; }
-    .blog-read { color: var(--gold); font-size: 0.85rem; text-decoration: none; font-weight: 500; }
-    .blog-read:hover { text-decoration: underline; }
-
-    /* === PRIVACY MODAL === */
-    .privacy-overlay {
-      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.85); z-index: 200;
-      overflow-y: auto; padding: 40px 24px;
-    }
-    .privacy-overlay.active { display: block; }
-    .privacy-content {
-      max-width: 800px; margin: auto;
-      background: #FFFFFF; border: 1px solid rgba(184,150,62,0.15);
-      border-radius: 20px; padding: 48px 40px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-    }
-    .privacy-content h2 { font-size: 1.8rem; color: var(--gold); margin-bottom: 24px; font-weight: 800; }
-    .privacy-content h3 { font-size: 1.2rem; color: var(--gold); margin: 24px 0 12px; font-weight: 700; }
-    .privacy-content p { color: #5A5A5A; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.9; }
-    .privacy-content ul { list-style: none; margin: 8px 0 16px; }
-    .privacy-content li {
-      color: #5A5A5A; padding: 4px 0; padding-right: 20px;
-      position: relative; font-size: 0.95rem;
-    }
-    .privacy-content li::before { content: '◆'; color: var(--gold); position: absolute; right: 0; font-size: 0.6rem; top: 8px; }
-    .privacy-close {
-      position: sticky; top: 0; float: left;
-      background: var(--gold); color: var(--black);
-      border: none; width: 36px; height: 36px; border-radius: 50%;
-      font-size: 1.2rem; cursor: pointer; font-weight: 700; z-index: 10;
-    }
-
-    /* === LAWYER (About the Lawyer) === */
-    .lawyer { background: #F8F6F1; }
-    .lawyer-content {
-      display: grid; grid-template-columns: 1fr 2fr;
-      gap: 50px; align-items: start;
-    }
-    .lawyer-photo {
-      background: linear-gradient(135deg, rgba(184,150,62,0.08), rgba(184,150,62,0.03));
-      border: 2px solid rgba(184,150,62,0.15);
-      border-radius: 20px;
-      padding: 40px; text-align: center;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      min-height: 280px;
-    }
-    .lawyer-photo .initials {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: var(--black);
-      font-size: 2.2rem; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .lawyer-photo .name { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
-    .lawyer-photo .title { color: #7A7A7A; font-size: 0.95rem; margin-top: 4px; }
-    .lawyer-details h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 16px; }
-    .lawyer-details p { color: #5A5A5A; font-size: 1.05rem; margin-bottom: 16px; line-height: 1.9; }
-    .qualifications { list-style: none; margin-top: 20px; }
-    .qualifications li {
-      color: #5A5A5A; padding: 8px 0;
-      padding-right: 28px; position: relative;
-      font-size: 1rem;
-    }
-    .qualifications li::before {
-      content: '⬧'; color: var(--gold); position: absolute;
-      right: 0; font-size: 0.9rem;
-    }
-
-    /* === CONSULTATION FORM === */
-    .consultation { background: #FDFCFA; }
-    .form-wrapper {
-      max-width: 700px; margin: auto;
-      background: #FFFFFF;
-      border: 1px solid rgba(184,150,62,0.12);
-      border-radius: 20px;
-      padding: 48px 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-    .form-group { margin-bottom: 24px; }
-    .form-group label {
-      display: block; color: #2C2C2C; font-weight: 500;
-      margin-bottom: 8px; font-size: 0.95rem;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      background: #F8F6F1;
-      border: 1px solid rgba(184,150,62,0.15);
-      border-radius: 10px;
-      padding: 14px 16px;
-      color: #2C2C2C;
-      font-family: 'Sakkal Majalla', 'Tajawal', sans-serif;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-      outline: none;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-    .form-group textarea { min-height: 120px; resize: vertical; }
-    .form-group select option { background: #FFFFFF; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .btn-submit {
-      width: 100%; padding: 16px;
-      background: var(--gold); color: var(--black);
-      border: none; border-radius: 10px;
-      font-family: 'Sakkal Majalla', 'Tajawal', sans-serif;
-      font-size: 1.1rem; font-weight: 700;
-      cursor: pointer; transition: all 0.3s;
-    }
-    .btn-submit:hover { background: var(--gold-light); }
-
-    /* === CONTACT === */
-    .contact { background: #F8F6F1; }
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .contact-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(184,150,62,0.1);
-      border-radius: 16px;
-      padding: 36px; text-align: center;
-      transition: all 0.3s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .contact-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 4px 16px rgba(184,150,62,0.1); }
-    .contact-icon {
-      width: 56px; height: 56px;
-      background: rgba(184,150,62,0.08);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px; font-size: 1.4rem;
-    }
-    .contact-card h3 { color: #2C2C2C; font-size: 1.1rem; margin-bottom: 8px; }
-    .contact-card p { color: #6A6A6A; font-size: 0.95rem; }
-    .contact-card a { color: var(--gold); text-decoration: none; }
-    .contact-card a:hover { text-decoration: underline; }
-
-    /* === FOOTER === */
-    footer {
-      background: #2C2C2C;
-      border-top: 1px solid rgba(184,150,62,0.2);
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .footer-logo { font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-    footer p { color: #9A9A9A; font-size: 0.9rem; }
-    .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 24px; }
-    .footer-links a { color: var(--gray-light); text-decoration: none; font-size: 0.9rem; }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* === RESPONSIVE === */
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .menu-toggle { display: block; }
       .nav-links.active {
         display: flex; flex-direction: column;
         position: absolute; top: 100%; right: 0; left: 0;
-        background: rgba(253,252,250,0.98);
+        background: rgba(26,26,26,0.98);
         padding: 20px 24px; gap: 16px;
-        border-bottom: 1px solid rgba(200,168,78,0.15);
+        border-bottom: 1px solid var(--gold-subtle);
       }
-      .hero h1 { font-size: 2.2rem; }
-      .hero .tagline { font-size: 1.15rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .lawyer-content { grid-template-columns: 1fr; }
-      .pdpl-grid { grid-template-columns: 1fr; }
-      .blog-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .privacy-content { padding: 32px 24px; }
-      .form-wrapper { padding: 32px 24px; }
     }
 
-    /* === ANIMATIONS === */
-    .fade-up {
-      opacity: 0; transform: translateY(30px);
-      transition: all 0.7s ease;
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: var(--charcoal);
+      background-image: radial-gradient(ellipse at center, rgba(200,168,78,0.06) 0%, transparent 70%);
+      position: relative;
+      padding: 120px 24px 80px;
     }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .hero-content { max-width: 750px; }
+    .hero h1 {
+      font-size: 3.5rem; font-weight: 700;
+      color: var(--gold);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .hero .subtitle-en {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.85rem; color: var(--text-on-dark);
+      letter-spacing: 6px; font-weight: 300;
+      opacity: 0.6;
+      margin-bottom: 32px;
+    }
+    .hero-line {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+    .hero .tagline {
+      font-family: 'Amiri', serif;
+      font-size: 1.5rem; color: var(--gold);
+      margin-bottom: 48px; font-weight: 400;
+      opacity: 0.9;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--charcoal);
+      padding: 14px 40px; border-radius: 6px; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      transition: background 0.3s;
+      border: 2px solid var(--gold);
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-secondary {
+      background: transparent; color: var(--gold);
+      padding: 14px 40px; border-radius: 6px; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(200,168,78,0.1); }
+
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.15rem; }
+    }
   </style>
 </head>
 <body>
@@ -478,12 +172,8 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <div class="logo-text">
-        الرويمي للمحاماة والتوثيق
-        <span>Alruwaimi Law Firm</span>
-      </div>
+      <div class="nav-logo">الرويمي للمحاماة والتوثيق</div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">عن المكتب</a></li>
         <li><a href="#services">خدماتنا</a></li>
         <li><a href="#pdpl">حماية البيانات</a></li>
         <li><a href="#lawyer">المحامية</a></li>
@@ -498,352 +188,13 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <div class="scale-icon">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 8 L50 72" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
-          <path d="M20 28 L80 28" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
-          <path d="M20 28 L10 52 Q20 62 30 52 Z" stroke="#C8A84E" stroke-width="2" fill="rgba(200,168,78,0.15)"/>
-          <path d="M80 28 L70 52 Q80 62 90 52 Z" stroke="#C8A84E" stroke-width="2" fill="rgba(200,168,78,0.15)"/>
-          <path d="M35 72 L65 72" stroke="#C8A84E" stroke-width="3" stroke-linecap="round"/>
-          <path d="M30 72 L30 80 L70 80 L70 72" stroke="#C8A84E" stroke-width="2.5" fill="rgba(200,168,78,0.1)" stroke-linecap="round"/>
-          <circle cx="50" cy="28" r="5" fill="#C8A84E" opacity="0.8"/>
-        </svg>
-      </div>
-      <h1>الرويمي للمحاماة والتوثيق</h1>
-      <p class="subtitle-en">ALRUWAIMI LAW FIRM</p>
-      <p class="tagline">خبرة قانونية.. نتائج موثوقة</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn-primary">تواصل معنا</a>
-        <a href="#services" class="btn-secondary">خدماتنا</a>
+      <h1 class="hero-stagger">الرويمي للمحاماة والتوثيق</h1>
+      <p class="subtitle-en hero-stagger">ALRUWAIMI LAW FIRM</p>
+      <div class="hero-line hero-stagger"></div>
+      <p class="tagline hero-stagger">خبرة قانونية.. نتائج موثوقة</p>
+      <div class="hero-buttons hero-stagger">
+        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
+        <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
       </div>
     </div>
   </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text fade-up">
-          <h3>عن المكتب</h3>
-          <p>مكتب الرويمي للمحاماة والتوثيق — مكتب محاماة سعودي متخصص في الترافع أمام المحاكم السعودية بمختلف درجاتها، وتقديم الاستشارات القانونية المتخصصة، وإدارة ملفات العملاء والموكلين باحترافية عالية.</p>
-          <p>نسعى لحماية حقوق موكلينا بأعلى معايير المهنية والدقة، مع الالتزام الكامل بالأنظمة واللوائح السعودية والشريعة الإسلامية.</p>
-        </div>
-        <div class="about-stats fade-up">
-          <div class="stat-card">
-            <span class="number">٦+</span>
-            <span class="label">مجالات قانونية</span>
-          </div>
-          <div class="stat-card">
-            <span class="number">٣</span>
-            <span class="label">درجات ترافع</span>
-          </div>
-          <div class="stat-card">
-            <span class="number">٢٤/٧</span>
-            <span class="label">متاحون لخدمتكم</span>
-          </div>
-          <div class="stat-card">
-            <span class="number">١٠٠٪</span>
-            <span class="label">التزام وسرية</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>خدماتنا القانونية</h2>
-        <p>نقدم مجموعة شاملة من الخدمات القانونية المتخصصة لحماية حقوقكم</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="services-grid">
-        <div class="service-card fade-up">
-          <div class="service-icon">⚖️</div>
-          <h3>القضايا التجارية</h3>
-          <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية أمام المحاكم التجارية.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">🏢</div>
-          <h3>القضايا العقارية</h3>
-          <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">📋</div>
-          <h3>التنفيذ والتوثيق</h3>
-          <p>تنفيذ الأحكام القضائية، رفع وإيقاف إيقاف الخدمات، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">🛡️</div>
-          <h3>حماية البيانات الشخصية (PDPL)</h3>
-          <p>تقييم الامتثال لنظام حماية البيانات الشخصية، إعداد سياسات الخصوصية، تدريب الفرق، ومتابعة متطلبات البنك المركزي للمؤسسات المالية.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PDPL -->
-  <section class="pdpl" id="pdpl">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>حماية البيانات الشخصية — PDPL</h2>
-        <p>خدمات متخصصة لامتثال شركتك لنظام حماية البيانات الشخصية</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="pdpl-grid">
-        <div class="pdpl-text fade-up">
-          <span class="pdpl-badge">خدمة متخصصة جديدة</span>
-          <h3>هل شركتك ملتزمة بنظام حماية البيانات؟</h3>
-          <p>نظام حماية البيانات الشخصية (PDPL) دخل حيز التنفيذ في سبتمبر ٢٠٢٤. جميع الجهات التي تعالج بيانات شخصية في المملكة ملزمة بالامتثال.</p>
-          <p>المؤسسات المالية المرخصة من البنك المركزي السعودي (ساما) تواجه التزاماً مزدوجاً: نظام PDPL + ضوابط الأمن السيبراني وحماية عملاء المؤسسات المالية.</p>
-          <ul class="pdpl-services-list">
-            <li>تقييم شامل للامتثال <span>تحليل الفجوات بين وضعك الحالي ومتطلبات النظام</span></li>
-            <li>مسؤول حماية بيانات خارجي (DPO) <span>تعيين مسؤول حماية بيانات دون الحاجة لتوظيف داخلي</span></li>
-            <li>صياغة السياسات والإجراءات <span>سياسة خصوصية، سجل معالجة، إجراءات الاستجابة للحوادث</span></li>
-            <li>التدريب والتأهيل <span>تدريب فريقك على متطلبات PDPL والتعامل مع بيانات العملاء</span></li>
-            <li>الاستجابة لحوادث تسريب البيانات <span>دعم قانوني خلال 72 ساعة من اكتشاف الحادث</span></li>
-          </ul>
-        </div>
-        <div class="fade-up">
-          <div class="pdpl-cta-box">
-            <span class="pdpl-icon">🛡</span>
-            <h4>تقييم امتثال أولي مجاني</h4>
-            <p>احصل على تقييم مبدئي لوضع شركتك تجاه نظام حماية البيانات الشخصية. نحدد لك الفجوات الرئيسية وخارطة الطريق للامتثال.</p>
-            <a href="#contact" class="btn-primary">اطلب التقييم المجاني</a>
-            <div class="pdpl-stats">
-              <div class="pdpl-stat">
-                <span class="num">٥ م.ر</span>
-                <span class="desc">غرامة عدم الامتثال</span>
-              </div>
-              <div class="pdpl-stat">
-                <span class="num">٧٢ ساعة</span>
-                <span class="desc">مهلة إبلاغ التسريب</span>
-              </div>
-              <div class="pdpl-stat">
-                <span class="num">٤٣ مادة</span>
-                <span class="desc">في النظام الأساسي</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section class="blog" id="blog">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>المدونة القانونية</h2>
-        <p>مقالات ونصائح قانونية لحماية حقوقك ومعرفة التزاماتك</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="blog-grid fade-up">
-        <div class="blog-card">
-          <div class="blog-card-header">
-            <span class="blog-tag">حماية البيانات</span>
-            <h3>٥ خطوات لتحقيق امتثال شركتك لنظام حماية البيانات الشخصية</h3>
-          </div>
-          <div class="blog-card-body">
-            <p>دليل عملي مختصر يوضح الخطوات الأساسية التي تحتاجها كل شركة سعودية لبدء رحلة الامتثال لنظام PDPL، من تعيين المسؤول إلى بناء سجل المعالجة.</p>
-          </div>
-          <div class="blog-card-footer">
-            <span class="blog-date">مارس ٢٠٢٦</span>
-            <a href="#" class="blog-read">اقرأ المزيد ←</a>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-header">
-            <span class="blog-tag">القطاع المالي</span>
-            <h3>المؤسسات المالية وحماية البيانات — الالتزام المزدوج بين PDPL وساما</h3>
-          </div>
-          <div class="blog-card-body">
-            <p>شرح مفصل للتحديات الفريدة التي تواجه شركات التمويل والمدفوعات في التوفيق بين متطلبات نظام حماية البيانات ومبادئ حماية عملاء المؤسسات المالية.</p>
-          </div>
-          <div class="blog-card-footer">
-            <span class="blog-date">مارس ٢٠٢٦</span>
-            <a href="#" class="blog-read">اقرأ المزيد ←</a>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-header">
-            <span class="blog-tag">حقوق البيانات</span>
-            <h3>حقوق أصحاب البيانات — ماذا يحق لعملائك أن يطلبوا منك؟</h3>
-          </div>
-          <div class="blog-card-body">
-            <p>المادة ٤ من PDPL تمنح أصحاب البيانات حقوقاً واضحة. تعرّف على هذه الحقوق وكيف تستعد شركتك للتعامل مع طلبات العملاء ضمن المهل النظامية.</p>
-          </div>
-          <div class="blog-card-footer">
-            <span class="blog-date">مارس ٢٠٢٦</span>
-            <a href="#" class="blog-read">اقرأ المزيد ←</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LAWYER -->
-  <section class="lawyer" id="lawyer">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>المحامية</h2>
-        <p>تعرّف على المحامية المؤسسة للمكتب</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="lawyer-content fade-up">
-        <div class="lawyer-photo">
-          <div class="initials">إ.ر</div>
-          <div class="name">أ. ابتسام الرويمي</div>
-          <div class="title">محامية ومستشارة قانونية</div>
-        </div>
-        <div class="lawyer-details">
-          <h3>أ. ابتسام الرويمي</h3>
-          <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتميز بخبرة متخصصة في الترافع أمام المحاكم السعودية بمختلف درجاتها، مع التزام تام بتحقيق أفضل النتائج لموكليها.</p>
-          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي (ساما). تجمع بين الخبرة القانونية العميقة والفهم العملي لتحديات الامتثال.</p>
-          <p>تؤمن بأن العدالة حق للجميع، وتسعى لتقديم خدمات قانونية عالية الجودة تجمع بين المهنية والقرب من العميل.</p>
-          <ul class="qualifications">
-            <li>محامية مرخصة من وزارة العدل</li>
-            <li>الترافع أمام جميع درجات التقاضي</li>
-            <li>متخصصة في حماية البيانات الشخصية (PDPL) وامتثال القطاع المالي</li>
-            <li>متخصصة في القضايا التجارية والعمالية والأسرية</li>
-            <li>خبرة في صياغة العقود والاستشارات القانونية</li>
-            <li>مسؤول حماية بيانات خارجي (DPO) للشركات</li>
-            <li>عضو الهيئة السعودية للمحامين</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>تواصل معنا</h2>
-        <p>نسعد بخدمتكم والإجابة على استفساراتكم</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="contact-grid fade-up">
-        <div class="contact-card">
-          <div class="contact-icon">📱</div>
-          <h3>الجوال</h3>
-          <p><a href="https://wa.me/966505557277" dir="ltr">+966 505 557 277</a></p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">✉️</div>
-          <h3>البريد الإلكتروني</h3>
-          <p><a href="mailto:info@alruwaimi-law.com">info@alruwaimi-law.com</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRIVACY POLICY MODAL -->
-  <div class="privacy-overlay" id="privacyModal">
-    <div class="privacy-content">
-      <button class="privacy-close" onclick="document.getElementById('privacyModal').classList.remove('active')">&times;</button>
-      <h2>سياسة الخصوصية وحماية البيانات الشخصية</h2>
-      <p><strong>آخر تحديث: مارس ٢٠٢٦</strong></p>
-      <p>يلتزم مكتب الرويمي للمحاماة والتوثيق بحماية خصوصية بياناتكم الشخصية وفقاً لنظام حماية البيانات الشخصية الصادر بالمرسوم الملكي رقم (م/19) وتاريخ 1443/2/9هـ ولوائحه التنفيذية.</p>
-
-      <h3>١. البيانات التي نجمعها</h3>
-      <p>نجمع البيانات التالية عند تواصلكم معنا أو استخدامكم لخدماتنا:</p>
-      <ul>
-        <li>الاسم الكامل ومعلومات التواصل (رقم الجوال، البريد الإلكتروني)</li>
-        <li>تفاصيل الاستشارة القانونية المطلوبة</li>
-        <li>بيانات الهوية عند التوكيل (رقم الهوية/الإقامة)</li>
-        <li>بيانات التصفح التقنية (عنوان IP، نوع المتصفح) بشكل مجهول الهوية</li>
-      </ul>
-
-      <h3>٢. أغراض معالجة البيانات</h3>
-      <p>نعالج بياناتكم الشخصية للأغراض التالية حصراً:</p>
-      <ul>
-        <li>تقديم الخدمات القانونية والاستشارات المطلوبة</li>
-        <li>التواصل معكم بشأن استفساراتكم القانونية</li>
-        <li>إدارة ملفات القضايا والتمثيل القانوني</li>
-        <li>الوفاء بالالتزامات النظامية والمهنية</li>
-      </ul>
-
-      <h3>٣. الأساس النظامي للمعالجة</h3>
-      <p>نعالج بياناتكم استناداً إلى المادة (٥) من نظام حماية البيانات الشخصية، وتشمل الأسس:</p>
-      <ul>
-        <li>الموافقة الصريحة عند تقديم طلب الاستشارة</li>
-        <li>تنفيذ العقد المبرم بيننا (عقد التوكيل/الاستشارة)</li>
-        <li>الالتزام بمتطلبات نظامية (نظام المحاماة ولوائحه)</li>
-      </ul>
-
-      <h3>٤. حقوقكم وفق المادة (٤) من النظام</h3>
-      <p>يحق لكم بصفتكم أصحاب بيانات:</p>
-      <ul>
-        <li>الاطلاع على بياناتكم الشخصية المحفوظة لدينا</li>
-        <li>طلب تصحيح البيانات غير الدقيقة أو غير المكتملة</li>
-        <li>طلب إتلاف البيانات عند انتفاء الغرض من جمعها</li>
-        <li>الاعتراض على معالجة البيانات في الحالات المنصوص عليها</li>
-        <li>طلب نقل البيانات إلى جهة أخرى</li>
-      </ul>
-
-      <h3>٥. حماية البيانات وأمنها</h3>
-      <p>نطبق إجراءات تقنية وإدارية مناسبة لحماية بياناتكم من الوصول غير المصرح به أو التعديل أو الإفشاء أو الإتلاف، تشمل التشفير والتحكم في الوصول والمراجعة الدورية.</p>
-
-      <h3>٦. الاحتفاظ بالبيانات</h3>
-      <p>نحتفظ ببياناتكم للمدة اللازمة لتحقيق أغراض المعالجة أو وفقاً لما تقتضيه الأنظمة السعودية، ثم يتم إتلافها بشكل آمن.</p>
-
-      <h3>٧. مشاركة البيانات</h3>
-      <p>لا نشارك بياناتكم مع أطراف ثالثة إلا في الحالات التالية:</p>
-      <ul>
-        <li>بموافقتكم الصريحة</li>
-        <li>لتنفيذ التزام نظامي أو أمر قضائي</li>
-        <li>لحماية مصالحكم الحيوية</li>
-      </ul>
-
-      <h3>٨. التواصل لممارسة حقوقكم</h3>
-      <p>لممارسة أي من حقوقكم المنصوص عليها أعلاه، يرجى التواصل معنا عبر:</p>
-      <ul>
-        <li>البريد الإلكتروني: info@alruwaimi-law.com</li>
-        <li>مع ذكر "طلب بيانات شخصية" في عنوان الرسالة</li>
-      </ul>
-      <p>نلتزم بالرد على طلباتكم خلال المهل النظامية المحددة في نظام حماية البيانات الشخصية ولوائحه التنفيذية.</p>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">الرويمي للمحاماة والتوثيق</div>
-    <p>خبرة قانونية.. نتائج موثوقة</p>
-    <p style="margin-top:12px;">جميع الحقوق محفوظة © ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
-    <div class="footer-links">
-      <a href="#about">عن المكتب</a>
-      <a href="#services">خدماتنا</a>
-      <a href="#pdpl">حماية البيانات</a>
-      <a href="#blog">المدونة</a>
-      <a href="#lawyer">المحامية</a>
-      <a href="#contact">تواصل معنا</a>
-      <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('active')">سياسة الخصوصية</a>
-    </div>
-  </footer>
-
-  <script>
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Nav scroll effect
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      nav.style.borderBottomColor = window.scrollY > 50
-        ? 'rgba(184,150,62,0.2)' : 'rgba(184,150,62,0.1)';
-      nav.style.boxShadow = window.scrollY > 50
-        ? '0 2px 12px rgba(0,0,0,0.06)' : '0 1px 8px rgba(0,0,0,0.04)';
-    });
-  </script>
-
-</body>
-</html>
