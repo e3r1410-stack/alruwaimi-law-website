@@ -487,7 +487,6 @@
         <li><a href="#services">خدماتنا</a></li>
         <li><a href="#pdpl">حماية البيانات</a></li>
         <li><a href="#lawyer">المحامية</a></li>
-        <li><a href="#consultation">طلب استشارة</a></li>
         <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
       </ul>
       <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">
@@ -514,7 +513,7 @@
       <p class="subtitle-en">ALRUWAIMI LAW FIRM</p>
       <p class="tagline">خبرة قانونية.. نتائج موثوقة</p>
       <div class="hero-buttons">
-        <a href="#consultation" class="btn-primary">اطلب استشارة</a>
+        <a href="#contact" class="btn-primary">تواصل معنا</a>
         <a href="#services" class="btn-secondary">خدماتنا</a>
       </div>
     </div>
@@ -621,7 +620,7 @@
             <span class="pdpl-icon">🛡</span>
             <h4>تقييم امتثال أولي مجاني</h4>
             <p>احصل على تقييم مبدئي لوضع شركتك تجاه نظام حماية البيانات الشخصية. نحدد لك الفجوات الرئيسية وخارطة الطريق للامتثال.</p>
-            <a href="#consultation" class="btn-primary">اطلب التقييم المجاني</a>
+            <a href="#contact" class="btn-primary">اطلب التقييم المجاني</a>
             <div class="pdpl-stats">
               <div class="pdpl-stat">
                 <span class="num">٥ م.ر</span>
@@ -727,61 +726,6 @@
     </div>
   </section>
 
-  <!-- CONSULTATION FORM -->
-  <section class="consultation" id="consultation">
-    <div class="container">
-      <div class="section-header fade-up">
-        <h2>اطلب استشارة قانونية</h2>
-        <p>تواصل معنا وسنعاود الاتصال بك في أقرب وقت</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="form-wrapper fade-up">
-        <form id="consultForm" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label>الاسم الكامل</label>
-              <input type="text" placeholder="أدخل اسمك الكامل" required>
-            </div>
-            <div class="form-group">
-              <label>رقم الجوال</label>
-              <input type="tel" placeholder="05XXXXXXXX" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>البريد الإلكتروني</label>
-            <input type="email" placeholder="example@email.com">
-          </div>
-          <div class="form-group">
-            <label>نوع القضية</label>
-            <select required>
-              <option value="" disabled selected>اختر نوع القضية</option>
-              <option>قضية تجارية</option>
-              <option>قضية عمالية</option>
-              <option>أحوال شخصية</option>
-              <option>قضية عقارية</option>
-              <option>قضية جنائية</option>
-              <option>تنفيذ أحكام</option>
-              <option>صياغة عقود</option>
-              <option>حماية بيانات شخصية (PDPL)</option>
-              <option>تقييم امتثال — قطاع مالي</option>
-              <option>استشارة قانونية عامة</option>
-              <option>أخرى</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>تفاصيل الاستشارة</label>
-            <textarea placeholder="اشرح لنا قضيتك أو استفسارك بشكل مختصر..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit">إرسال طلب الاستشارة</button>
-        </form>
-        <div id="formSuccess" style="display:none; text-align:center; padding:40px 0;">
-          <div style="font-size:3rem; margin-bottom:16px;">✓</div>
-          <h3 style="color:var(--gold); font-size:1.4rem; margin-bottom:8px;">تم إرسال طلبك بنجاح</h3>
-          <p style="color:var(--gray-light);">سنتواصل معك في أقرب وقت ممكن بإذن الله</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
@@ -900,13 +844,6 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Form handler
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('consultForm').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    }
 
     // Nav scroll effect
     window.addEventListener('scroll', () => {
