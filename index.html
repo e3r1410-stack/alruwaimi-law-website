@@ -165,6 +165,126 @@
       .hero h1 { font-size: 2.2rem; }
       .hero .tagline { font-size: 1.15rem; }
     }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--warm-white);
+      padding: 24px;
+      border-bottom: 1px solid var(--gold-subtle);
+    }
+    .trust-bar-inner {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      text-align: center;
+    }
+    .trust-item {
+      color: #6B6B6B; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.3px;
+    }
+    .trust-sep { color: var(--gold); font-size: 0.5rem; }
+
+    /* === SERVICES === */
+    .services {
+      background: var(--warm-white);
+      padding: 100px 24px;
+    }
+    .section-header {
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-size: 2.4rem; font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section-header-line {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin-top: 12px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    /* Featured PDPL card */
+    .pdpl-featured {
+      background: var(--charcoal);
+      border-radius: 16px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      border-right: 4px solid var(--gold);
+    }
+    .pdpl-featured h3 {
+      color: var(--gold); font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .pdpl-featured p {
+      color: var(--text-on-dark);
+      font-size: 1rem; line-height: 1.9;
+      margin-bottom: 20px; opacity: 0.9;
+    }
+    .pdpl-bullets {
+      list-style: none; margin-bottom: 24px;
+    }
+    .pdpl-bullets li {
+      color: var(--text-on-dark); padding: 8px 0;
+      padding-right: 24px; position: relative;
+      font-size: 0.95rem;
+    }
+    .pdpl-bullets li::before {
+      content: '—'; color: var(--gold);
+      position: absolute; right: 0;
+    }
+    .pdpl-penalty {
+      display: inline-block;
+      background: rgba(200,168,78,0.15);
+      border: 1px solid var(--gold-subtle);
+      border-radius: 8px;
+      padding: 8px 20px;
+      color: var(--gold); font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .pdpl-featured .btn-primary {
+      display: inline-block;
+    }
+    /* Stacked service cards */
+    .services-stack { display: flex; flex-direction: column; gap: 20px; }
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(200,168,78,0.1);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(200,168,78,0.08);
+    }
+    .service-num {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem; color: var(--gold);
+      opacity: 0.4; font-weight: 700;
+      margin-bottom: 8px; display: block;
+    }
+    .service-card h3 {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.1rem; color: var(--text-on-light);
+      margin-bottom: 8px; font-weight: 700;
+    }
+    .service-card p {
+      color: #6B6B6B; font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .pdpl-featured { padding: 36px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -195,6 +315,58 @@
       <div class="hero-buttons hero-stagger">
         <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
         <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-item">محامية مرخصة من وزارة العدل</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">عضو الهيئة السعودية للمحامين</span>
+      <span class="trust-sep">◆</span>
+      <span class="trust-item">متخصصون في PDPL والامتثال التنظيمي</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>خدماتنا</h2>
+        <div class="section-header-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="pdpl-featured fade-up" id="pdpl">
+          <h3>حماية البيانات الشخصية — PDPL</h3>
+          <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي.</p>
+          <ul class="pdpl-bullets">
+            <li>تقييم شامل للامتثال وتحليل الفجوات</li>
+            <li>مسؤول حماية بيانات خارجي (DPO)</li>
+            <li>الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة</li>
+          </ul>
+          <div class="pdpl-penalty">غرامة عدم الامتثال تصل إلى ٥ مليون ريال</div>
+          <br>
+          <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
+        </div>
+        <div class="services-stack">
+          <div class="service-card fade-up">
+            <span class="service-num">٠١</span>
+            <h3>القضايا التجارية</h3>
+            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٢</span>
+            <h3>القضايا العقارية</h3>
+            <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
+          </div>
+          <div class="service-card fade-up">
+            <span class="service-num">٠٣</span>
+            <h3>التنفيذ والتوثيق</h3>
+            <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
