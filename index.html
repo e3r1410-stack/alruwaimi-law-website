@@ -10,14 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --charcoal: #1A1A1A;
-      --warm-white: #F5F2EB;
-      --gold: #C8A84E;
+      --white: #FFFFFF;
+      --off-white: #FAFAF8;
+      --cream: #F7F5F0;
+      --gold: #B8963E;
       --gold-light: #D4B96A;
-      --text-on-dark: #E8E2D6;
-      --text-on-light: #2C2C2C;
-      --gold-subtle: rgba(200,168,78,0.2);
-      --text-muted: #6B6B6B;
+      --gold-dark: #9A7B2F;
+      --gold-glow: rgba(184,150,62,0.08);
+      --gold-border: rgba(184,150,62,0.15);
+      --text: #1E1E1E;
+      --text-secondary: #5A5A5A;
+      --text-muted: #8A8A8A;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,77 +28,84 @@
 
     body {
       font-family: 'Tajawal', sans-serif;
-      background: var(--warm-white);
-      color: var(--text-on-light);
+      background: var(--white);
+      color: var(--text);
       line-height: 1.8;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, .font-serif {
-      font-family: 'Amiri', serif;
-    }
+    h1, h2, h3, .font-serif { font-family: 'Amiri', serif; }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
 
-    /* Fade-up animation */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* === ANIMATIONS === */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .hero-stagger { opacity: 0; transform: translateY(18px); }
+    .hero-stagger.visible { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
 
-    /* Hero staggered load */
-    .hero-stagger { opacity: 0; transform: translateY(20px); }
-    .hero-stagger.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* === DECORATIVE PATTERNS === */
+    .pattern-dots {
+      background-image: radial-gradient(circle, var(--gold-border) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .gold-line { width: 50px; height: 2px; background: var(--gold); border-radius: 1px; }
+    .gold-line-center { margin: 14px auto 0; }
 
     /* === NAV === */
     nav {
-      position: fixed; top: 0; right: 0; left: 0;
-      z-index: 100;
-      background: rgba(26,26,26,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gold-subtle);
-      transition: all 0.3s;
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s;
+    }
+    nav.scrolled {
+      border-bottom-color: var(--gold-border);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.04);
     }
     .nav-inner {
-      max-width: 1200px; margin: auto;
+      max-width: 1140px; margin: auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 24px;
-      transition: padding 0.3s;
+      padding: 18px 28px; transition: padding 0.3s;
     }
-    nav.scrolled .nav-inner { padding: 12px 24px; }
-    nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    nav.scrolled .nav-inner { padding: 12px 28px; }
     .nav-logo {
       font-family: 'Amiri', serif;
-      font-size: 1.4rem; font-weight: 700;
+      font-size: 1.35rem; font-weight: 700;
       color: var(--gold);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--gold);
+      font-family: 'Amiri', serif;
     }
     .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--text-on-dark); text-decoration: none;
-      font-size: 0.9rem; font-weight: 400;
-      transition: color 0.3s;
-      opacity: 0.8;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.3s; position: relative;
     }
-    .nav-links a:hover { color: var(--gold); opacity: 1; }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; right: 0; width: 0; height: 2px;
+      background: var(--gold); transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-cta {
-      background: var(--gold); color: var(--charcoal) !important;
-      padding: 8px 24px; border-radius: 6px;
-      font-weight: 700; opacity: 1 !important;
-      transition: background 0.3s;
+      background: var(--gold) !important; color: var(--white) !important;
+      padding: 8px 24px; border-radius: 8px;
+      font-weight: 700; transition: all 0.3s;
     }
-    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(184,150,62,0.25); }
     .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
-    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); margin: 5px 0; transition: 0.3s; }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; border-radius: 2px; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -103,374 +113,542 @@
       .nav-links.active {
         display: flex; flex-direction: column;
         position: absolute; top: 100%; right: 0; left: 0;
-        background: rgba(26,26,26,0.98);
-        padding: 20px 24px; gap: 16px;
-        border-bottom: 1px solid var(--gold-subtle);
+        background: rgba(255,255,255,0.98);
+        padding: 24px 28px; gap: 18px;
+        border-bottom: 1px solid var(--gold-border);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
       }
     }
 
     /* === HERO === */
     .hero {
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      background: var(--charcoal);
-      background-image: radial-gradient(ellipse at center, rgba(200,168,78,0.06) 0%, transparent 70%);
+      display: flex; align-items: center;
       position: relative;
-      padding: 120px 24px 80px;
+      background: var(--white);
+      overflow: hidden;
+      padding: 120px 28px 80px;
     }
-    .hero-content { max-width: 750px; }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -20%; right: -10%; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(184,150,62,0.07) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -10%; left: -5%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(184,150,62,0.04) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1140px; margin: auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-text { max-width: 560px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-border);
+      border-radius: 24px; padding: 6px 18px;
+      font-size: 0.8rem; color: var(--gold-dark);
+      font-weight: 600; margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
     .hero h1 {
-      font-size: 3.5rem; font-weight: 700;
-      color: var(--gold);
-      line-height: 1.4;
-      margin-bottom: 12px;
+      font-size: 3.2rem; font-weight: 700;
+      color: var(--text); line-height: 1.35;
+      margin-bottom: 8px;
     }
+    .hero h1 span { color: var(--gold); }
     .hero .subtitle-en {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 0.85rem; color: var(--text-on-dark);
-      letter-spacing: 6px; font-weight: 300;
-      opacity: 0.6;
-      margin-bottom: 32px;
-    }
-    .hero-line {
-      width: 60px; height: 1px;
-      background: var(--gold);
-      margin: 0 auto 32px;
+      font-size: 0.8rem; color: var(--text-muted);
+      letter-spacing: 4px; font-weight: 300;
+      margin-bottom: 20px;
     }
     .hero .tagline {
-      font-family: 'Amiri', serif;
-      font-size: 1.5rem; color: var(--gold);
-      margin-bottom: 48px; font-weight: 400;
-      opacity: 0.9;
+      font-size: 1.2rem; color: var(--text-secondary);
+      margin-bottom: 36px; line-height: 1.9;
     }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Buttons */
     .btn-primary {
-      background: var(--gold); color: var(--charcoal);
-      padding: 14px 40px; border-radius: 6px; text-decoration: none;
-      font-weight: 700; font-size: 1rem;
-      transition: background 0.3s;
-      border: 2px solid var(--gold);
+      background: var(--gold); color: var(--white);
+      padding: 14px 36px; border-radius: 10px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s; border: 2px solid var(--gold);
+      display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-primary:hover { background: var(--gold-dark); border-color: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(184,150,62,0.25); }
     .btn-secondary {
       background: transparent; color: var(--gold);
-      padding: 14px 40px; border-radius: 6px; text-decoration: none;
-      font-weight: 700; font-size: 1rem;
-      border: 2px solid var(--gold);
+      padding: 14px 36px; border-radius: 10px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem;
+      border: 2px solid var(--gold-border);
       transition: all 0.3s;
     }
-    .btn-secondary:hover { background: rgba(200,168,78,0.1); }
+    .btn-secondary:hover { border-color: var(--gold); background: var(--gold-glow); }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06), 0 1px 3px rgba(184,150,62,0.08);
+      position: relative; z-index: 2;
+      text-align: center; width: 100%;
+    }
+    .hero-card::before {
+      content: ''; position: absolute;
+      top: -1px; right: 0; left: 0; height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      border-radius: 24px 24px 0 0;
+    }
+    .hero-card-icon {
+      width: 72px; height: 72px; margin: 0 auto 24px;
+    }
+    .hero-card-icon svg { width: 100%; height: 100%; }
+    .hero-card h3 {
+      font-size: 1.4rem; color: var(--text);
+      margin-bottom: 12px;
+    }
+    .hero-card p {
+      color: var(--text-secondary); font-size: 0.95rem;
+      line-height: 1.8; margin-bottom: 20px;
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 24px;
+      border-top: 1px solid var(--gold-border);
+      padding-top: 24px;
+    }
+    .hero-stat-num {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--gold); display: block;
+    }
+    .hero-stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .hero-float-badge {
+      position: absolute; z-index: 3;
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px; padding: 12px 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; font-weight: 600; color: var(--text);
+      animation: float-badge 4s ease-in-out infinite;
+    }
+    .hero-float-badge.top { top: 10%; left: -20px; }
+    .hero-float-badge.bottom { bottom: 10%; right: -20px; animation-delay: 2s; }
+    .badge-icon {
+      width: 32px; height: 32px;
+      background: var(--gold-glow);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    @keyframes float-badge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
 
     @media (max-width: 900px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero .tagline { font-size: 1.15rem; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-text { max-width: 100%; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-buttons { justify-content: center; }
+      .hero-visual { margin-top: 20px; }
+      .hero-float-badge { display: none; }
     }
 
     /* === TRUST BAR === */
     .trust-bar {
-      background: var(--warm-white);
-      padding: 24px;
-      border-bottom: 1px solid var(--gold-subtle);
+      background: var(--cream);
+      padding: 20px 28px;
+      border-top: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
     }
     .trust-bar-inner {
-      max-width: 1200px; margin: auto;
+      max-width: 1140px; margin: auto;
       display: flex; align-items: center; justify-content: center;
-      gap: 16px; flex-wrap: wrap;
-      text-align: center;
+      gap: 12px; flex-wrap: wrap; text-align: center;
     }
-    .trust-item {
-      color: var(--text-muted); font-size: 0.85rem;
-      font-weight: 500; letter-spacing: 0.3px;
-    }
-    .trust-sep { color: var(--gold); font-size: 0.5rem; }
+    .trust-item { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+    .trust-sep { color: var(--gold); font-size: 0.45rem; }
 
-    /* === SERVICES === */
-    .services {
-      background: var(--warm-white);
-      padding: 100px 24px;
-    }
-    .section-header {
-      margin-bottom: 60px;
-    }
+    /* === SECTIONS === */
+    section { padding: 100px 28px; }
+    .section-header { text-align: center; margin-bottom: 64px; }
     .section-header h2 {
       font-size: 2.4rem; font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 8px;
+      color: var(--text); margin-bottom: 14px;
     }
-    .section-header-line {
-      width: 50px; height: 2px;
-      background: var(--gold);
-      margin-top: 12px;
-    }
+    .section-header h2 span { color: var(--gold); }
+    .section-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 550px; margin: 0 auto; }
+
+    /* === SERVICES === */
+    .services { background: var(--white); }
     .services-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 28px;
-      align-items: start;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
-    /* Featured PDPL card */
-    .pdpl-featured {
-      background: var(--charcoal);
-      border-radius: 16px;
-      padding: 48px 40px;
-      position: relative;
-      overflow: hidden;
-      border-right: 4px solid var(--gold);
-    }
-    .pdpl-featured h3 {
-      color: var(--gold); font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
-    .pdpl-featured p {
-      color: var(--text-on-dark);
-      font-size: 1rem; line-height: 1.9;
-      margin-bottom: 20px; opacity: 0.9;
-    }
-    .pdpl-bullets {
-      list-style: none; margin-bottom: 24px;
-    }
-    .pdpl-bullets li {
-      color: var(--text-on-dark); padding: 8px 0;
-      padding-right: 24px; position: relative;
-      font-size: 0.95rem;
-    }
-    .pdpl-bullets li::before {
-      content: '—'; color: var(--gold);
-      position: absolute; right: 0;
-    }
-    .pdpl-penalty {
-      display: inline-block;
-      background: rgba(200,168,78,0.15);
-      border: 1px solid var(--gold-subtle);
-      border-radius: 8px;
-      padding: 8px 20px;
-      color: var(--gold); font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 28px; margin-top: 4px;
-    }
-    .pdpl-featured .btn-primary {
-      display: inline-block;
-    }
-    /* Stacked service cards */
-    .services-stack { display: flex; flex-direction: column; gap: 20px; }
     .service-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(200,168,78,0.1);
-      border-radius: 12px;
-      padding: 28px 24px;
-      transition: all 0.3s;
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 20px; padding: 36px 32px;
+      transition: all 0.4s; position: relative; overflow: hidden;
     }
+    .service-card::before {
+      content: ''; position: absolute;
+      top: 0; right: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--gold-glow), transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .service-card:hover::before { opacity: 1; }
     .service-card:hover {
       border-color: var(--gold);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(200,168,78,0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(184,150,62,0.1);
     }
-    .service-num {
-      font-family: 'Amiri', serif;
-      font-size: 1.8rem; color: var(--gold);
-      opacity: 0.4; font-weight: 700;
-      margin-bottom: 8px; display: block;
+    .service-card-inner { position: relative; z-index: 1; }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--gold-glow); border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.4rem;
+      transition: all 0.3s;
     }
+    .service-card:hover .service-icon {
+      background: var(--gold); border-color: var(--gold);
+    }
+    .service-card:hover .service-icon svg { stroke: var(--white); }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2; fill: none; }
     .service-card h3 {
       font-family: 'Tajawal', sans-serif;
-      font-size: 1.1rem; color: var(--text-on-light);
-      margin-bottom: 8px; font-weight: 700;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--text); margin-bottom: 10px;
     }
-    .service-card p {
-      color: var(--text-muted); font-size: 0.9rem;
-      line-height: 1.7;
+    .service-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; }
+
+    /* Featured PDPL */
+    .pdpl-featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #FFFDF8 0%, #FFF9ED 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 24px; padding: 48px;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 48px; align-items: center;
+      position: relative; overflow: hidden;
     }
+    .pdpl-featured::before {
+      content: ''; position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle at 80% 20%, rgba(184,150,62,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .pdpl-text { position: relative; z-index: 1; }
+    .pdpl-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--white); border: 1px solid var(--gold-border);
+      border-radius: 20px; padding: 5px 16px;
+      font-size: 0.78rem; color: var(--gold-dark);
+      font-weight: 600; margin-bottom: 20px;
+    }
+    .pdpl-text h3 { font-size: 1.6rem; color: var(--text); margin-bottom: 14px; }
+    .pdpl-text h3 span { color: var(--gold); }
+    .pdpl-text > p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; }
+    .pdpl-list { list-style: none; margin-bottom: 28px; }
+    .pdpl-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; color: var(--text);
+      font-size: 0.95rem; border-bottom: 1px solid var(--gold-border);
+    }
+    .pdpl-list li:last-child { border-bottom: none; }
+    .pdpl-check {
+      width: 22px; height: 22px; min-width: 22px;
+      background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .pdpl-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 3; fill: none; }
+    .pdpl-visual { position: relative; z-index: 1; }
+    .pdpl-stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .pdpl-stat-card {
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px; padding: 24px; text-align: center;
+      transition: all 0.3s;
+    }
+    .pdpl-stat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,150,62,0.08); }
+    .pdpl-stat-num {
+      font-family: 'Amiri', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold); display: block;
+    }
+    .pdpl-stat-label { color: var(--text-muted); font-size: 0.8rem; margin-top: 4px; }
+    .pdpl-penalty-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 16px; padding: 20px 24px;
+      text-align: center; color: var(--white);
+    }
+    .pdpl-penalty-card .amount { font-family: 'Amiri', serif; font-size: 1.6rem; font-weight: 700; }
+    .pdpl-penalty-card .label { font-size: 0.8rem; opacity: 0.9; }
 
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: 1fr; }
-      .pdpl-featured { padding: 36px 24px; }
+      .pdpl-featured { grid-template-columns: 1fr; padding: 32px 24px; }
+    }
+
+    /* === WHY US === */
+    .why-us { background: var(--cream); position: relative; overflow: hidden; }
+    .why-us::before {
+      content: ''; position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      opacity: 0.4; pointer-events: none;
+      background-image: radial-gradient(circle, var(--gold-border) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; position: relative; z-index: 1;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 20px; padding: 36px 28px;
+      text-align: center; transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(184,150,62,0.08); border-color: var(--gold); }
+    .why-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold-glow), rgba(184,150,62,0.15));
+      border-radius: 20px; margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-icon svg { width: 28px; height: 28px; stroke: var(--gold); stroke-width: 1.8; fill: none; }
+    .why-card h3 { font-family: 'Tajawal', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .why-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; }
     }
 
     /* === LAWYER === */
-    .lawyer {
-      background: var(--charcoal);
-      padding: 100px 24px;
-    }
-    .lawyer .section-header h2 { color: var(--gold); }
-    .lawyer .section-header-line { background: var(--gold); }
+    .lawyer { background: var(--white); }
     .lawyer-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
+      display: grid; grid-template-columns: 1fr 2fr;
       gap: 60px; align-items: start;
     }
-    .lawyer-photo {
-      text-align: center;
-    }
-    .lawyer-initials {
-      width: 120px; height: 120px;
+    .lawyer-photo { text-align: center; position: relative; }
+    .lawyer-photo-frame {
+      width: 180px; height: 180px;
       border-radius: 50%;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-family: 'Amiri', serif;
-      font-size: 2.4rem; font-weight: 700;
+      border: 3px solid var(--gold-border);
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--cream), var(--white));
+      position: relative;
+    }
+    .lawyer-photo-frame::before {
+      content: ''; position: absolute;
+      top: -8px; right: -8px; bottom: -8px; left: -8px;
+      border: 1px dashed var(--gold-border);
+      border-radius: 50%;
+    }
+    .lawyer-initials {
+      font-family: 'Amiri', serif;
+      font-size: 3rem; font-weight: 700;
+      color: var(--gold);
     }
     .lawyer-photo .name {
       font-family: 'Amiri', serif;
-      font-size: 1.3rem; color: var(--gold); font-weight: 700;
+      font-size: 1.3rem; color: var(--text); font-weight: 700;
     }
     .lawyer-photo .title {
-      color: var(--text-on-dark);
-      font-size: 0.9rem; opacity: 0.7; margin-top: 4px;
+      color: var(--gold); font-size: 0.9rem;
+      margin-top: 4px; font-weight: 500;
     }
     .lawyer-bio .lead {
       font-family: 'Amiri', serif;
       font-size: 1.3rem; color: var(--gold);
       line-height: 1.8; margin-bottom: 24px;
     }
-    .lawyer-bio p {
-      color: var(--text-on-dark);
-      font-size: 1rem; line-height: 1.9;
-      margin-bottom: 16px; opacity: 0.9;
+    .lawyer-bio p { color: var(--text-secondary); font-size: 1rem; line-height: 1.9; margin-bottom: 16px; }
+    .qualifications { list-style: none; margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+    .qual-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0; font-size: 0.92rem;
+      color: var(--text-secondary);
     }
-    .qualifications {
-      list-style: none; margin-top: 28px;
-    }
-    .qualifications li {
-      color: var(--text-on-dark);
-      padding: 10px 0; padding-right: 36px;
-      position: relative; font-size: 0.95rem;
-      border-bottom: 1px solid rgba(200,168,78,0.08);
-      opacity: 0.9;
-    }
-    .qualifications li .q-num {
-      color: var(--gold); position: absolute;
-      right: 0; font-family: 'Amiri', serif;
-      font-size: 1.1rem; font-weight: 700;
+    .qual-dot {
+      width: 8px; height: 8px; min-width: 8px;
+      border-radius: 50%; background: var(--gold);
     }
 
     @media (max-width: 900px) {
       .lawyer-grid { grid-template-columns: 1fr; }
-      .lawyer-photo { margin-bottom: 20px; }
+      .qualifications { grid-template-columns: 1fr; }
     }
 
     /* === CONTACT === */
     .contact {
-      background: var(--warm-white);
-      padding: 100px 24px;
-      text-align: center;
+      background: var(--cream);
+      position: relative; overflow: hidden;
     }
-    .contact .section-header { margin-bottom: 40px; }
-    .contact .section-header-line { margin: 12px auto 0; }
-    .contact-subtitle {
-      color: var(--text-muted); font-size: 1.1rem;
-      margin-top: 16px;
+    .contact::before {
+      content: ''; position: absolute;
+      width: 400px; height: 400px;
+      top: -200px; left: 50%; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(184,150,62,0.06) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
     }
+    .contact-inner {
+      max-width: 640px; margin: 0 auto;
+      text-align: center; position: relative; z-index: 1;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    }
+    .contact-card h2 { font-size: 1.8rem; color: var(--text); margin-bottom: 10px; }
+    .contact-card p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 32px; }
     .contact-buttons {
-      display: flex; gap: 20px;
+      display: flex; gap: 16px;
       justify-content: center; flex-wrap: wrap;
-      margin-top: 40px;
     }
-    .contact-buttons .btn-primary,
-    .contact-buttons .btn-secondary {
-      padding: 16px 48px; font-size: 1.05rem;
+    .btn-whatsapp {
+      background: #25D366; color: var(--white);
+      padding: 14px 36px; border-radius: 10px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.3s; border: 2px solid #25D366;
+    }
+    .btn-whatsapp:hover { background: #1fb855; border-color: #1fb855; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.25); }
+    .btn-whatsapp svg { width: 18px; height: 18px; fill: var(--white); }
+    .contact-details {
+      display: flex; justify-content: center; gap: 40px;
+      margin-top: 28px; padding-top: 28px;
+      border-top: 1px solid var(--gold-border);
+    }
+    .contact-detail { text-align: center; }
+    .contact-detail-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-detail-value a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    .contact-detail-value a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .contact-card { padding: 36px 24px; }
+      .contact-details { flex-direction: column; gap: 16px; }
     }
 
     /* === FOOTER === */
     footer {
-      background: var(--charcoal);
-      padding: 40px 24px;
+      background: var(--text); padding: 48px 28px 32px;
       text-align: center;
-      border-top: 1px solid var(--gold-subtle);
     }
     .footer-logo {
       font-family: 'Amiri', serif;
-      font-size: 1.2rem; font-weight: 700;
+      font-size: 1.3rem; font-weight: 700;
       color: var(--gold); margin-bottom: 8px;
     }
-    footer p { color: var(--text-on-dark); font-size: 0.85rem; opacity: 0.6; }
-    footer .copyright { margin-top: 12px; }
+    footer p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
     .footer-links {
       margin-top: 20px; display: flex;
-      justify-content: center; gap: 24px; flex-wrap: wrap;
+      justify-content: center; gap: 28px; flex-wrap: wrap;
     }
     .footer-links a {
-      color: var(--text-on-dark); text-decoration: none;
-      font-size: 0.85rem; opacity: 0.5;
-      transition: opacity 0.3s;
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      font-size: 0.85rem; transition: color 0.3s;
     }
-    .footer-links a:hover { opacity: 1; color: var(--gold); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-divider {
+      width: 50px; height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 20px auto;
+    }
 
     /* === PRIVACY MODAL === */
     .privacy-overlay {
       display: none; position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 200; overflow-y: auto;
-      padding: 40px 24px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200; overflow-y: auto; padding: 40px 24px;
     }
     .privacy-overlay.active { display: block; }
     .privacy-content {
       max-width: 800px; margin: auto;
-      background: var(--charcoal);
-      border: 1px solid var(--gold-subtle);
-      border-radius: 16px;
-      padding: 48px 40px;
-      color: var(--text-on-dark);
+      background: var(--white);
+      border: 1px solid var(--gold-border);
+      border-radius: 20px; padding: 48px 40px;
     }
-    .privacy-content h2 {
-      color: var(--gold); font-size: 1.8rem;
-      margin-bottom: 24px;
-    }
-    .privacy-content h3 {
-      color: var(--gold); font-size: 1.2rem;
-      margin: 24px 0 12px;
-    }
-    .privacy-content p {
-      font-size: 0.95rem; line-height: 1.9;
-      margin-bottom: 12px; opacity: 0.9;
-    }
+    .privacy-content h2 { color: var(--text); font-size: 1.8rem; margin-bottom: 24px; }
+    .privacy-content h3 { color: var(--gold); font-size: 1.15rem; margin: 28px 0 12px; }
+    .privacy-content p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px; line-height: 1.9; }
     .privacy-content ul { list-style: none; margin: 8px 0 16px; }
     .privacy-content li {
-      padding: 4px 0; padding-right: 20px;
-      position: relative; font-size: 0.95rem; opacity: 0.9;
+      color: var(--text-secondary); padding: 4px 0; padding-right: 20px;
+      position: relative; font-size: 0.95rem;
     }
     .privacy-content li::before {
-      content: '—'; color: var(--gold);
-      position: absolute; right: 0;
+      content: ''; width: 6px; height: 6px;
+      background: var(--gold); border-radius: 50%;
+      position: absolute; right: 0; top: 12px;
     }
     .privacy-close {
       position: sticky; top: 0; float: left;
-      background: var(--gold); color: var(--charcoal);
-      border: none; width: 36px; height: 36px;
-      border-radius: 50%; font-size: 1.2rem;
-      cursor: pointer; font-weight: 700; z-index: 10;
+      background: var(--cream); color: var(--text);
+      border: 1px solid var(--gold-border);
+      width: 40px; height: 40px; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer; font-weight: 700; z-index: 10;
+      transition: all 0.3s;
+    }
+    .privacy-close:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .privacy-content { padding: 32px 24px; }
     }
 
     /* === FLOATING WHATSAPP === */
     .whatsapp-float {
       position: fixed; bottom: 28px; left: 28px;
-      z-index: 90;
-      width: 56px; height: 56px;
-      background: var(--gold);
-      border-radius: 50%;
+      z-index: 90; width: 56px; height: 56px;
+      background: #25D366; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(200,168,78,0.3);
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
       transition: transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
       animation: wa-pulse 2s ease-in-out 1;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(200,168,78,0.4);
-    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
     .whatsapp-float svg { width: 28px; height: 28px; fill: #FFFFFF; }
-    @keyframes wa-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
+    @keyframes wa-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
     @media (max-width: 900px) {
-      .privacy-content { padding: 32px 24px; }
       .whatsapp-float { bottom: 20px; left: 20px; width: 50px; height: 50px; }
       .whatsapp-float svg { width: 24px; height: 24px; }
+      section { padding: 72px 20px; }
     }
   </style>
 </head>
@@ -479,10 +657,13 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">الرويمي للمحاماة والتوثيق</div>
+      <div class="nav-logo">
+        <div class="nav-logo-icon">إ.ر</div>
+        الرويمي للمحاماة
+      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">خدماتنا</a></li>
-        <li><a href="#pdpl">حماية البيانات</a></li>
+        <li><a href="#why">لماذا نحن</a></li>
         <li><a href="#lawyer">المحامية</a></li>
         <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
       </ul>
@@ -494,14 +675,62 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-stagger">الرويمي للمحاماة والتوثيق</h1>
-      <p class="subtitle-en hero-stagger">ALRUWAIMI LAW FIRM</p>
-      <div class="hero-line hero-stagger"></div>
-      <p class="tagline hero-stagger">خبرة قانونية.. نتائج موثوقة</p>
-      <div class="hero-buttons hero-stagger">
-        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">احجز استشارتك</a>
-        <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge hero-stagger">
+          <div class="hero-badge-dot"></div>
+          مكتب محاماة سعودي مرخص
+        </div>
+        <h1 class="hero-stagger">حماية <span>حقوقك</span><br>تبدأ من هنا</h1>
+        <p class="subtitle-en hero-stagger">ALRUWAIMI LAW FIRM</p>
+        <p class="tagline hero-stagger">مكتب الرويمي للمحاماة والتوثيق — خبرة قانونية متخصصة في الترافع والاستشارات القانونية وحماية البيانات الشخصية.</p>
+        <div class="hero-buttons hero-stagger">
+          <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            احجز استشارتك
+          </a>
+          <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-float-badge top">
+          <div class="badge-icon">⚖️</div>
+          ترافع بجميع الدرجات
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="35" stroke="#B8963E" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.3"/>
+              <path d="M36 12V52" stroke="#B8963E" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M18 24H54" stroke="#B8963E" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M18 24L12 40C12 40 18 46 24 40L18 24Z" stroke="#B8963E" stroke-width="2" fill="rgba(184,150,62,0.1)"/>
+              <path d="M54 24L48 40C48 40 54 46 60 40L54 24Z" stroke="#B8963E" stroke-width="2" fill="rgba(184,150,62,0.1)"/>
+              <circle cx="36" cy="24" r="4" fill="#B8963E" opacity="0.6"/>
+              <path d="M28 52H44" stroke="#B8963E" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M26 52V58H46V52" stroke="#B8963E" stroke-width="2" fill="rgba(184,150,62,0.08)" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>خبرة قانونية.. نتائج موثوقة</h3>
+          <p>نسعى لحماية حقوق موكلينا بأعلى معايير المهنية والدقة</p>
+          <div class="hero-stats">
+            <div>
+              <span class="hero-stat-num">٦+</span>
+              <span class="hero-stat-label">مجالات قانونية</span>
+            </div>
+            <div>
+              <span class="hero-stat-num">٣</span>
+              <span class="hero-stat-label">درجات ترافع</span>
+            </div>
+            <div>
+              <span class="hero-stat-num">٢٤/٧</span>
+              <span class="hero-stat-label">متاحون لخدمتكم</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-float-badge bottom">
+          <div class="badge-icon">🛡️</div>
+          متخصصون في PDPL
+        </div>
       </div>
     </div>
   </section>
@@ -521,37 +750,111 @@
   <section class="services" id="services">
     <div class="container">
       <div class="section-header fade-up">
-        <h2>خدماتنا</h2>
-        <div class="section-header-line"></div>
+        <h2>خدماتنا <span>القانونية</span></h2>
+        <div class="gold-line gold-line-center"></div>
+        <p style="margin-top:16px;">نقدم مجموعة شاملة من الخدمات القانونية المتخصصة لحماية حقوقكم</p>
       </div>
       <div class="services-grid">
+        <!-- PDPL Featured -->
         <div class="pdpl-featured fade-up" id="pdpl">
-          <h3>حماية البيانات الشخصية — PDPL</h3>
-          <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية المرخصة من البنك المركزي السعودي.</p>
-          <ul class="pdpl-bullets">
-            <li>تقييم شامل للامتثال وتحليل الفجوات</li>
-            <li>مسؤول حماية بيانات خارجي (DPO)</li>
-            <li>الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة</li>
-          </ul>
-          <div class="pdpl-penalty">غرامة عدم الامتثال تصل إلى ٥ مليون ريال</div>
-          <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
-        </div>
-        <div class="services-stack">
-          <div class="service-card fade-up">
-            <span class="service-num">٠١</span>
-            <h3>القضايا التجارية</h3>
-            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية.</p>
+          <div class="pdpl-text">
+            <div class="pdpl-badge">🛡 خدمة متخصصة</div>
+            <h3>حماية البيانات الشخصية — <span>PDPL</span></h3>
+            <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية.</p>
+            <ul class="pdpl-list">
+              <li>
+                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                تقييم شامل للامتثال وتحليل الفجوات
+              </li>
+              <li>
+                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                مسؤول حماية بيانات خارجي (DPO)
+              </li>
+              <li>
+                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة
+              </li>
+            </ul>
+            <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
           </div>
-          <div class="service-card fade-up">
-            <span class="service-num">٠٢</span>
+          <div class="pdpl-visual">
+            <div class="pdpl-stats-grid">
+              <div class="pdpl-stat-card">
+                <span class="pdpl-stat-num">٧٢</span>
+                <span class="pdpl-stat-label">ساعة مهلة إبلاغ</span>
+              </div>
+              <div class="pdpl-stat-card">
+                <span class="pdpl-stat-num">٤٣</span>
+                <span class="pdpl-stat-label">مادة في النظام</span>
+              </div>
+              <div class="pdpl-penalty-card">
+                <span class="amount">٥ مليون ريال</span>
+                <span class="label">غرامة عدم الامتثال</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service Cards -->
+        <div class="service-card fade-up">
+          <div class="service-card-inner">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>القضايا التجارية</h3>
+            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية أمام المحاكم التجارية.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card-inner">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a4 4 0 004 4h0a4 4 0 004-4V7M3 7h18M21 7v1a4 4 0 01-4 4h0a4 4 0 01-4-4V7M9 21V12M15 21V12M5 21h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <h3>القضايا العقارية</h3>
             <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
           </div>
-          <div class="service-card fade-up">
-            <span class="service-num">٠٣</span>
+        </div>
+        <div class="service-card fade-up" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto;">
+          <div class="service-card-inner">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round"/></svg>
+            </div>
             <h3>التنفيذ والتوثيق</h3>
             <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2>لماذا <span>الرويمي</span>؟</h2>
+        <div class="gold-line gold-line-center"></div>
+        <p style="margin-top:16px;">نتميز بمعايير عالية تضمن لك أفضل تمثيل قانوني</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>سرية تامة</h3>
+          <p>نلتزم بأعلى معايير السرية في التعامل مع ملفات موكلينا وبياناتهم الشخصية</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>استجابة سريعة</h3>
+          <p>فريق متاح على مدار الساعة للرد على استفساراتكم ومتابعة قضاياكم بشكل مستمر</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>تمثيل متخصص</h3>
+          <p>ترافع أمام جميع درجات المحاكم السعودية مع خبرة عميقة في القضايا التجارية والعقارية</p>
         </div>
       </div>
     </div>
@@ -561,27 +864,29 @@
   <section class="lawyer" id="lawyer">
     <div class="container">
       <div class="section-header fade-up">
-        <h2>المحامية</h2>
-        <div class="section-header-line"></div>
+        <h2>تعرّف على <span>المحامية</span></h2>
+        <div class="gold-line gold-line-center"></div>
       </div>
       <div class="lawyer-grid">
         <div class="lawyer-photo fade-up">
-          <div class="lawyer-initials">إ.ر</div>
+          <div class="lawyer-photo-frame">
+            <span class="lawyer-initials">إ.ر</span>
+          </div>
           <div class="name">أ. ابتسام الرويمي</div>
           <div class="title">محامية ومستشارة قانونية</div>
         </div>
         <div class="lawyer-bio fade-up">
           <p class="lead">محامية سعودية تجمع بين الخبرة القانونية والفهم العملي لتحديات الأعمال</p>
           <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتميز بخبرة متخصصة في الترافع أمام المحاكم السعودية بمختلف درجاتها، مع التزام تام بتحقيق أفضل النتائج لموكليها.</p>
-          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية. تؤمن بأن العدالة حق للجميع، وتسعى لتقديم خدمات قانونية عالية الجودة.</p>
+          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية. تؤمن بأن العدالة حق للجميع.</p>
           <ul class="qualifications">
-            <li><span class="q-num">١</span>محامية مرخصة من وزارة العدل</li>
-            <li><span class="q-num">٢</span>الترافع أمام جميع درجات التقاضي</li>
-            <li><span class="q-num">٣</span>متخصصة في حماية البيانات الشخصية (PDPL)</li>
-            <li><span class="q-num">٤</span>متخصصة في القضايا التجارية والعقارية</li>
-            <li><span class="q-num">٥</span>خبرة في صياغة العقود والاستشارات القانونية</li>
-            <li><span class="q-num">٦</span>مسؤول حماية بيانات خارجي (DPO) للشركات</li>
-            <li><span class="q-num">٧</span>عضو الهيئة السعودية للمحامين</li>
+            <li class="qual-item"><span class="qual-dot"></span>محامية مرخصة من وزارة العدل</li>
+            <li class="qual-item"><span class="qual-dot"></span>الترافع أمام جميع درجات التقاضي</li>
+            <li class="qual-item"><span class="qual-dot"></span>متخصصة في حماية البيانات (PDPL)</li>
+            <li class="qual-item"><span class="qual-dot"></span>القضايا التجارية والعقارية</li>
+            <li class="qual-item"><span class="qual-dot"></span>صياغة العقود والاستشارات</li>
+            <li class="qual-item"><span class="qual-dot"></span>مسؤول حماية بيانات خارجي (DPO)</li>
+            <li class="qual-item"><span class="qual-dot"></span>عضو الهيئة السعودية للمحامين</li>
           </ul>
         </div>
       </div>
@@ -590,15 +895,27 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header fade-up">
+    <div class="contact-inner">
+      <div class="contact-card fade-up">
         <h2>تواصل معنا</h2>
-        <div class="section-header-line"></div>
-        <p class="contact-subtitle">نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
-      </div>
-      <div class="contact-buttons fade-up">
-        <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">تواصل عبر واتساب</a>
-        <a href="mailto:info@alruwaimi-law.com" class="btn-secondary">أرسل بريد إلكتروني</a>
+        <p>نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
+        <div class="contact-buttons">
+          <a href="https://wa.me/966505557277" class="btn-whatsapp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            تواصل عبر واتساب
+          </a>
+          <a href="mailto:info@alruwaimi-law.com" class="btn-secondary">أرسل بريد إلكتروني</a>
+        </div>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-label">الجوال</div>
+            <div class="contact-detail-value"><a href="https://wa.me/966505557277" dir="ltr">+966 505 557 277</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">البريد الإلكتروني</div>
+            <div class="contact-detail-value"><a href="mailto:info@alruwaimi-law.com">info@alruwaimi-law.com</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -610,7 +927,6 @@
       <h2>سياسة الخصوصية وحماية البيانات الشخصية</h2>
       <p><strong>آخر تحديث: مارس ٢٠٢٦</strong></p>
       <p>يلتزم مكتب الرويمي للمحاماة والتوثيق بحماية خصوصية بياناتكم الشخصية وفقاً لنظام حماية البيانات الشخصية الصادر بالمرسوم الملكي رقم (م/19) وتاريخ 1443/2/9هـ ولوائحه التنفيذية.</p>
-
       <h3>١. البيانات التي نجمعها</h3>
       <p>نجمع البيانات التالية عند تواصلكم معنا أو استخدامكم لخدماتنا:</p>
       <ul>
@@ -619,7 +935,6 @@
         <li>بيانات الهوية عند التوكيل (رقم الهوية/الإقامة)</li>
         <li>بيانات التصفح التقنية (عنوان IP، نوع المتصفح) بشكل مجهول الهوية</li>
       </ul>
-
       <h3>٢. أغراض معالجة البيانات</h3>
       <p>نعالج بياناتكم الشخصية للأغراض التالية حصراً:</p>
       <ul>
@@ -628,7 +943,6 @@
         <li>إدارة ملفات القضايا والتمثيل القانوني</li>
         <li>الوفاء بالالتزامات النظامية والمهنية</li>
       </ul>
-
       <h3>٣. الأساس النظامي للمعالجة</h3>
       <p>نعالج بياناتكم استناداً إلى المادة (٥) من نظام حماية البيانات الشخصية، وتشمل الأسس:</p>
       <ul>
@@ -636,7 +950,6 @@
         <li>تنفيذ العقد المبرم بيننا (عقد التوكيل/الاستشارة)</li>
         <li>الالتزام بمتطلبات نظامية (نظام المحاماة ولوائحه)</li>
       </ul>
-
       <h3>٤. حقوقكم وفق المادة (٤) من النظام</h3>
       <p>يحق لكم بصفتكم أصحاب بيانات:</p>
       <ul>
@@ -646,13 +959,10 @@
         <li>الاعتراض على معالجة البيانات في الحالات المنصوص عليها</li>
         <li>طلب نقل البيانات إلى جهة أخرى</li>
       </ul>
-
       <h3>٥. حماية البيانات وأمنها</h3>
-      <p>نطبق إجراءات تقنية وإدارية مناسبة لحماية بياناتكم من الوصول غير المصرح به أو التعديل أو الإفشاء أو الإتلاف، تشمل التشفير والتحكم في الوصول والمراجعة الدورية.</p>
-
+      <p>نطبق إجراءات تقنية وإدارية مناسبة لحماية بياناتكم من الوصول غير المصرح به أو التعديل أو الإفشاء أو الإتلاف.</p>
       <h3>٦. الاحتفاظ بالبيانات</h3>
       <p>نحتفظ ببياناتكم للمدة اللازمة لتحقيق أغراض المعالجة أو وفقاً لما تقتضيه الأنظمة السعودية، ثم يتم إتلافها بشكل آمن.</p>
-
       <h3>٧. مشاركة البيانات</h3>
       <p>لا نشارك بياناتكم مع أطراف ثالثة إلا في الحالات التالية:</p>
       <ul>
@@ -660,14 +970,8 @@
         <li>لتنفيذ التزام نظامي أو أمر قضائي</li>
         <li>لحماية مصالحكم الحيوية</li>
       </ul>
-
       <h3>٨. التواصل لممارسة حقوقكم</h3>
-      <p>لممارسة أي من حقوقكم المنصوص عليها أعلاه، يرجى التواصل معنا عبر:</p>
-      <ul>
-        <li>البريد الإلكتروني: info@alruwaimi-law.com</li>
-        <li>مع ذكر "طلب بيانات شخصية" في عنوان الرسالة</li>
-      </ul>
-      <p>نلتزم بالرد على طلباتكم خلال المهل النظامية المحددة في نظام حماية البيانات الشخصية ولوائحه التنفيذية.</p>
+      <p>لممارسة أي من حقوقكم، يرجى التواصل عبر البريد الإلكتروني: info@alruwaimi-law.com مع ذكر "طلب بيانات شخصية" في عنوان الرسالة.</p>
     </div>
   </div>
 
@@ -675,10 +979,11 @@
   <footer>
     <div class="footer-logo">الرويمي للمحاماة والتوثيق</div>
     <p>خبرة قانونية.. نتائج موثوقة</p>
-    <p class="copyright">جميع الحقوق محفوظة &copy; ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
+    <div class="footer-divider"></div>
+    <p>جميع الحقوق محفوظة &copy; ٢٠٢٦ — مكتب الرويمي للمحاماة والتوثيق</p>
     <div class="footer-links">
       <a href="#services">خدماتنا</a>
-      <a href="#pdpl">حماية البيانات</a>
+      <a href="#why">لماذا نحن</a>
       <a href="#lawyer">المحامية</a>
       <a href="#contact">تواصل معنا</a>
       <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('active')">سياسة الخصوصية</a>
@@ -691,7 +996,7 @@
   </a>
 
   <script>
-    // Scroll animations (fade-up)
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -703,7 +1008,7 @@
     window.addEventListener('load', () => {
       document.querySelectorAll('.hero-stagger').forEach((el, i) => {
         setTimeout(() => {
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
           el.classList.add('visible');
         }, 200 + i * 100);
       });
