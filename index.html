@@ -345,6 +345,18 @@
       color: var(--text); margin-bottom: 10px;
     }
     .service-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; }
+    a.service-card { display: block; text-decoration: none; }
+    .service-new-badge {
+      display: inline-block; background: var(--gold-glow);
+      border: 1px solid var(--gold-border); color: var(--gold);
+      border-radius: 20px; padding: 2px 12px;
+      font-size: 0.72rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .service-link-more {
+      display: inline-block; margin-top: 12px;
+      color: var(--gold); font-size: 0.88rem; font-weight: 700;
+    }
+    a.service-card:hover .service-link-more { text-decoration: underline; }
 
     /* Featured PDPL */
     .pdpl-featured {
@@ -813,7 +825,7 @@
             <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
           </div>
         </div>
-        <div class="service-card fade-up" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto;">
+        <div class="service-card fade-up">
           <div class="service-card-inner">
             <div class="service-icon">
               <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round"/></svg>
@@ -822,6 +834,17 @@
             <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
           </div>
         </div>
+        <a href="/white-land-fees" class="service-card fade-up">
+          <div class="service-card-inner">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="service-new-badge">خدمة جديدة</span>
+            <h3>رسوم الأراضي البيضاء والعقارات الشاغرة</h3>
+            <p>فحص خضوع مبدئي، وإعداد الاعتراض على قرار الإخضاع أو تقدير القيمة، والتمثيل أمام اللجنة وديوان المظالم خلال مهلة الـ٦٠ يوماً.</p>
+            <span class="service-link-more">اعرف المزيد ←</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
