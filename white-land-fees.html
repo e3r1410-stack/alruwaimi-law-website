@@ -10,16 +10,9 @@
 <meta property="og:description" content="قبل أن تدفع رسم أرضك البيضاء، تأكد من خضوعها. فحص مبدئي مجاني وتمثيل أمام اللجنة وديوان المظالم.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alruwaimi-law.com/white-land-fees">
-<!--
-  ⚠️ قبل النشر استبدل موضعين:
-  (1) رقم واتساب: استبدل كل «966505557277» برقم المكتب بالصيغة الدولية بدون + (مثال: 9665012345678).
-  (2) معرّف قياس Google: أزل التعليق حول وسم gtag أدناه وضع معرّفك (AW-XXXXXXXXXX) لتفعيل تتبّع التحويلات.
-  المسار بعد النشر: https://alruwaimi-law.com/white-land-fees
--->
-<!-- ضع معرّف قياس Google هنا لتفعيل تتبّع التحويلات:
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-XXXXXXXXXX');</script>
--->
+<!-- Google tag (gtag.js) — Google Ads: AW-10788036777 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10788036777" onload="window.__gtagReady=true"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-10788036777');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -247,13 +240,31 @@
 <a class="float-wa" href="https://wa.me/966505557277?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D9%81%D8%AD%D8%B5%20%D9%85%D8%A8%D8%AF%D8%A6%D9%8A%20%D9%84%D8%A3%D8%B1%D8%B6%D9%8A%20%D8%A7%D9%84%D8%A8%D9%8A%D8%B6%D8%A7%D8%A1" aria-label="واتساب" data-conv="whatsapp" onclick="trackConv('whatsapp')">🟢</a>
 
 <script>
-  // تتبّع التحويلات: يعمل تلقائياً مع Google Ads/GA4 عند إضافة معرّف القياس في <head>
-  function trackConv(type){
-    try{
-      if(typeof gtag==='function'){ gtag('event','conversion',{'event_category':'lead','event_label':type}); }
-      if(window.dataLayer){ window.dataLayer.push({'event':'lead','method':type}); }
-    }catch(e){}
-  }
+  /* تتبّع التحويلات — Google Ads
+     يُسجَّل تحويل "Contact" عند الضغط على أي زر تواصل (واتساب / بريد / هاتف)،
+     ثم يُستكمل الانتقال بعد وصول الإشارة (مع مهلة أمان 900 مللي ثانية). */
+  var GADS_SEND_TO = 'AW-10788036777/bx4CCM-Ko9scEKnBkZgo';
+  function trackConv(type){ /* مُبقاة للتوافق — التتبّع الفعلي في المستمع أدناه */ }
+  (function(){
+    document.addEventListener('click', function(ev){
+      var t = ev.target;
+      var a = (t && t.closest) ? t.closest('a[data-conv]') : null;
+      if(!a || a.getAttribute('data-conv-done') === '1') return;
+      var url = a.getAttribute('href');
+      /* إن لم يُحمَّل وسم Google (حاجب إعلانات مثلاً) نترك الرابط يعمل فوراً بلا أي تأخير */
+      if(!url || !window.__gtagReady || typeof gtag !== 'function') return;
+      var type = a.getAttribute('data-conv') || 'lead';
+      ev.preventDefault();
+      a.setAttribute('data-conv-done','1');
+      var done = false;
+      var go = function(){ if(done) return; done = true; window.location.href = url; };
+      try{
+        gtag('event','conversion',{ 'send_to': GADS_SEND_TO, 'event_callback': go });
+        if(window.dataLayer){ window.dataLayer.push({'event':'lead','method':type}); }
+      }catch(e){ go(); return; }
+      setTimeout(go, 900);
+    }, true);
+  })();
 </script>
 </body>
 </html>
