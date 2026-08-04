@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الرويمي للمحاماة والتوثيق | خبرة قانونية.. نتائج موثوقة</title>
-  <meta name="description" content="مكتب الرويمي للمحاماة والتوثيق — خدمات قانونية متخصصة في الترافع والاستشارات القانونية وإدارة القضايا في المملكة العربية السعودية">
+  <title>الرويمي للمحاماة والتوثيق | محاماة عقارية ورسوم الأراضي البيضاء</title>
+  <meta name="description" content="مكتب الرويمي للمحاماة والتوثيق — تخصص في المنازعات العقارية ورسوم الأراضي البيضاء والعقارات الشاغرة، والاعتراض عليها أمام اللجان وديوان المظالم خلال مهلة الـ٦٠ يوماً.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -254,7 +254,7 @@
       animation: float-badge 4s ease-in-out infinite;
     }
     .hero-float-badge.top { top: 10%; left: -20px; }
-    .hero-float-badge.bottom { bottom: 10%; right: -20px; animation-delay: 2s; }
+    .hero-float-badge.bottom { bottom: -20px; right: -20px; animation-delay: 2s; }
     .badge-icon {
       width: 32px; height: 32px;
       background: var(--gold-glow);
@@ -359,7 +359,7 @@
     a.service-card:hover .service-link-more { text-decoration: underline; }
 
     /* Featured PDPL */
-    .pdpl-featured {
+    .svcftr-featured {
       grid-column: 1 / -1;
       background: linear-gradient(135deg, #FFFDF8 0%, #FFF9ED 100%);
       border: 1px solid var(--gold-border);
@@ -368,66 +368,66 @@
       gap: 48px; align-items: center;
       position: relative; overflow: hidden;
     }
-    .pdpl-featured::before {
+    .svcftr-featured::before {
       content: ''; position: absolute;
       top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle at 80% 20%, rgba(184,150,62,0.06) 0%, transparent 50%);
       pointer-events: none;
     }
-    .pdpl-text { position: relative; z-index: 1; }
-    .pdpl-badge {
+    .svcftr-text { position: relative; z-index: 1; }
+    .svcftr-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--white); border: 1px solid var(--gold-border);
       border-radius: 20px; padding: 5px 16px;
       font-size: 0.78rem; color: var(--gold-dark);
       font-weight: 600; margin-bottom: 20px;
     }
-    .pdpl-text h3 { font-size: 1.6rem; color: var(--text); margin-bottom: 14px; }
-    .pdpl-text h3 span { color: var(--gold); }
-    .pdpl-text > p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; }
-    .pdpl-list { list-style: none; margin-bottom: 28px; }
-    .pdpl-list li {
+    .svcftr-text h3 { font-size: 1.6rem; color: var(--text); margin-bottom: 14px; }
+    .svcftr-text h3 span { color: var(--gold); }
+    .svcftr-text > p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; }
+    .svcftr-list { list-style: none; margin-bottom: 28px; }
+    .svcftr-list li {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 10px 0; color: var(--text);
       font-size: 0.95rem; border-bottom: 1px solid var(--gold-border);
     }
-    .pdpl-list li:last-child { border-bottom: none; }
-    .pdpl-check {
+    .svcftr-list li:last-child { border-bottom: none; }
+    .svcftr-check {
       width: 22px; height: 22px; min-width: 22px;
       background: var(--gold); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin-top: 2px;
     }
-    .pdpl-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 3; fill: none; }
-    .pdpl-visual { position: relative; z-index: 1; }
-    .pdpl-stats-grid {
+    .svcftr-check svg { width: 12px; height: 12px; stroke: var(--white); stroke-width: 3; fill: none; }
+    .svcftr-visual { position: relative; z-index: 1; }
+    .svcftr-stats-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
-    .pdpl-stat-card {
+    .svcftr-stat-card {
       background: var(--white);
       border: 1px solid var(--gold-border);
       border-radius: 16px; padding: 24px; text-align: center;
       transition: all 0.3s;
     }
-    .pdpl-stat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,150,62,0.08); }
-    .pdpl-stat-num {
+    .svcftr-stat-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,150,62,0.08); }
+    .svcftr-stat-num {
       font-family: 'Amiri', serif;
       font-size: 2rem; font-weight: 700;
       color: var(--gold); display: block;
     }
-    .pdpl-stat-label { color: var(--text-muted); font-size: 0.8rem; margin-top: 4px; }
-    .pdpl-penalty-card {
+    .svcftr-stat-label { color: var(--text-muted); font-size: 0.8rem; margin-top: 4px; }
+    .svcftr-penalty-card {
       grid-column: 1 / -1;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       border-radius: 16px; padding: 20px 24px;
       text-align: center; color: var(--white);
     }
-    .pdpl-penalty-card .amount { font-family: 'Amiri', serif; font-size: 1.6rem; font-weight: 700; }
-    .pdpl-penalty-card .label { font-size: 0.8rem; opacity: 0.9; }
+    .svcftr-penalty-card .amount { display: block; font-family: 'Amiri', serif; font-size: 1.6rem; font-weight: 700; line-height: 1.4; }
+    .svcftr-penalty-card .label { display: block; font-size: 0.8rem; opacity: 0.9; }
 
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: 1fr; }
-      .pdpl-featured { grid-template-columns: 1fr; padding: 32px 24px; }
+      .svcftr-featured { grid-template-columns: 1fr; padding: 32px 24px; }
     }
 
     /* === WHY US === */
@@ -693,15 +693,15 @@
           <div class="hero-badge-dot"></div>
           مكتب محاماة سعودي مرخص
         </div>
-        <h1 class="hero-stagger">حماية <span>حقوقك</span><br>تبدأ من هنا</h1>
+        <h1 class="hero-stagger">حماية <span>أصولك العقارية</span><br>تبدأ من هنا</h1>
         <p class="subtitle-en hero-stagger">ALRUWAIMI LAW FIRM</p>
-        <p class="tagline hero-stagger">مكتب الرويمي للمحاماة والتوثيق — خبرة قانونية متخصصة في الترافع والاستشارات القانونية وحماية البيانات الشخصية.</p>
+        <p class="tagline hero-stagger">مكتب الرويمي للمحاماة والتوثيق — تخصص في المنازعات العقارية ورسوم الأراضي البيضاء والعقارات الشاغرة، والترافع أمام المحاكم واللجان وديوان المظالم.</p>
         <div class="hero-buttons hero-stagger">
           <a href="https://wa.me/966505557277" class="btn-primary" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             احجز استشارتك
           </a>
-          <a href="#services" class="btn-secondary">تعرّف على خدماتنا</a>
+          <a href="/white-land-fees" class="btn-secondary">رسوم الأراضي البيضاء ←</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -723,11 +723,11 @@
             </svg>
           </div>
           <h3>خبرة قانونية.. نتائج موثوقة</h3>
-          <p>نسعى لحماية حقوق موكلينا بأعلى معايير المهنية والدقة</p>
+          <p>خبرة متخصصة في العقار وحماية الملكية العقارية</p>
           <div class="hero-stats">
             <div>
-              <span class="hero-stat-num">٦+</span>
-              <span class="hero-stat-label">مجالات قانونية</span>
+              <span class="hero-stat-num">٦٠</span>
+              <span class="hero-stat-label">يوماً مهلة الاعتراض</span>
             </div>
             <div>
               <span class="hero-stat-num">٣</span>
@@ -740,8 +740,8 @@
           </div>
         </div>
         <div class="hero-float-badge bottom">
-          <div class="badge-icon">🛡️</div>
-          متخصصون في PDPL
+          <div class="badge-icon">🏛️</div>
+          رسوم الأراضي البيضاء
         </div>
       </div>
     </div>
@@ -754,7 +754,7 @@
       <span class="trust-sep">◆</span>
       <span class="trust-item">عضو الهيئة السعودية للمحامين</span>
       <span class="trust-sep">◆</span>
-      <span class="trust-item">متخصصون في PDPL والامتثال التنظيمي</span>
+      <span class="trust-item">متخصصون في المنازعات العقارية ورسوم الأراضي البيضاء</span>
     </div>
   </div>
 
@@ -764,44 +764,44 @@
       <div class="section-header fade-up">
         <h2>خدماتنا <span>القانونية</span></h2>
         <div class="gold-line gold-line-center"></div>
-        <p style="margin-top:16px;">نقدم مجموعة شاملة من الخدمات القانونية المتخصصة لحماية حقوقكم</p>
+        <p style="margin-top:16px;">تخصص عقاري عميق، تسنده خبرة شاملة في القضايا التجارية والتنفيذ والامتثال</p>
       </div>
       <div class="services-grid">
-        <!-- PDPL Featured -->
-        <div class="pdpl-featured fade-up" id="pdpl">
-          <div class="pdpl-text">
-            <div class="pdpl-badge">🛡 خدمة متخصصة</div>
-            <h3>حماية البيانات الشخصية — <span>PDPL</span></h3>
-            <p>نظام حماية البيانات الشخصية دخل حيز التنفيذ في سبتمبر ٢٠٢٤. نساعد شركتك على تحقيق الامتثال الكامل وتجنب العقوبات، مع تركيز خاص على المؤسسات المالية.</p>
-            <ul class="pdpl-list">
+        <!-- White Land Featured -->
+        <div class="svcftr-featured fade-up" id="white-land">
+          <div class="svcftr-text">
+            <div class="svcftr-badge">🏛 خدمة متخصصة</div>
+            <h3>رسوم الأراضي البيضاء <span>والعقارات الشاغرة</span></h3>
+            <p>مع التوسّع في تطبيق نظام رسوم الأراضي البيضاء وإصدار الفواتير، واعتماد اللائحة التنفيذية لرسوم العقارات الشاغرة، أصبح كثير من الملاك أمام التزامات مالية سنوية. وكل قرار إخضاع أو تقدير قيمة قابل للاعتراض خلال مهلة الـ٦٠ يوماً من تاريخ التبليغ.</p>
+            <ul class="svcftr-list">
               <li>
-                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                تقييم شامل للامتثال وتحليل الفجوات
+                <div class="svcftr-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                فحص خضوع مبدئي: هل تنطبق الشروط النظامية على أرضك فعلاً؟
               </li>
               <li>
-                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                مسؤول حماية بيانات خارجي (DPO)
+                <div class="svcftr-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                إعداد الاعتراض على قرار الإخضاع أو على تقدير القيمة
               </li>
               <li>
-                <div class="pdpl-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                الاستجابة لحوادث تسريب البيانات خلال ٧٢ ساعة
+                <div class="svcftr-check"><svg viewBox="0 0 12 12"><path d="M2 6L5 9L10 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                التمثيل أمام لجنة الوزارة وديوان المظالم
               </li>
             </ul>
-            <a href="https://wa.me/966505557277?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%20%D8%A7%D9%85%D8%AA%D8%AB%D8%A7%D9%84%20PDPL" class="btn-primary" target="_blank" rel="noopener">اطلب تقييم مجاني</a>
+            <a href="/white-land-fees" class="btn-primary">اعرف التفاصيل والخيارات النظامية</a>
           </div>
-          <div class="pdpl-visual">
-            <div class="pdpl-stats-grid">
-              <div class="pdpl-stat-card">
-                <span class="pdpl-stat-num">٧٢</span>
-                <span class="pdpl-stat-label">ساعة مهلة إبلاغ</span>
+          <div class="svcftr-visual">
+            <div class="svcftr-stats-grid">
+              <div class="svcftr-stat-card">
+                <span class="svcftr-stat-num">٦٠</span>
+                <span class="svcftr-stat-label">يوماً مهلة الاعتراض</span>
               </div>
-              <div class="pdpl-stat-card">
-                <span class="pdpl-stat-num">٤٣</span>
-                <span class="pdpl-stat-label">مادة في النظام</span>
+              <div class="svcftr-stat-card">
+                <span class="svcftr-stat-num">٥٬٠٠٠</span>
+                <span class="svcftr-stat-label">م² حدّ المساحة</span>
               </div>
-              <div class="pdpl-penalty-card">
-                <span class="amount">٥ مليون ريال</span>
-                <span class="label">غرامة عدم الامتثال</span>
+              <div class="svcftr-penalty-card">
+                <span class="amount">١٠٪ سنوياً</span>
+                <span class="label">أعلى شريحة للرسم</span>
               </div>
             </div>
           </div>
@@ -810,19 +810,10 @@
         <div class="service-card fade-up">
           <div class="service-card-inner">
             <div class="service-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>القضايا التجارية</h3>
-            <p>الترافع في منازعات الشركات والعقود التجارية، وتأسيس الشركات، والتصفية، وحماية الحقوق التجارية أمام المحاكم التجارية.</p>
-          </div>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-card-inner">
-            <div class="service-icon">
               <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a4 4 0 004 4h0a4 4 0 004-4V7M3 7h18M21 7v1a4 4 0 01-4 4h0a4 4 0 01-4-4V7M9 21V12M15 21V12M5 21h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>القضايا العقارية</h3>
-            <p>منازعات البيع والشراء، عقود الإيجار، إخلاء العقار، التسجيل العيني، وحماية الملكية العقارية.</p>
+            <h3>المنازعات العقارية</h3>
+            <p>منازعات البيع والشراء، عقود الإيجار وإخلاء العقار، التسجيل العيني، قسمة التركات العقارية، ونزاعات الحدود والملكية أمام المحاكم المختصة.</p>
           </div>
         </div>
         <div class="service-card fade-up">
@@ -830,21 +821,28 @@
             <div class="service-icon">
               <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round"/></svg>
             </div>
-            <h3>التنفيذ والتوثيق</h3>
-            <p>تنفيذ الأحكام القضائية، صياغة العقود وتوثيقها، والتمثيل أمام محاكم التنفيذ.</p>
+            <h3>العقود العقارية والتوثيق</h3>
+            <p>صياغة ومراجعة عقود البيع والإيجار والمساهمات العقارية، توثيقها، وتنفيذ الأحكام أمام محاكم التنفيذ.</p>
           </div>
         </div>
-        <a href="/white-land-fees" class="service-card fade-up">
+        <div class="service-card fade-up">
           <div class="service-card-inner">
             <div class="service-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span class="service-new-badge">خدمة جديدة</span>
-            <h3>رسوم الأراضي البيضاء والعقارات الشاغرة</h3>
-            <p>فحص خضوع مبدئي، وإعداد الاعتراض على قرار الإخضاع أو تقدير القيمة، والتمثيل أمام اللجنة وديوان المظالم خلال مهلة الـ٦٠ يوماً.</p>
-            <span class="service-link-more">اعرف المزيد ←</span>
+            <h3>القضايا التجارية والاستثمار العقاري</h3>
+            <p>منازعات الشركات والعقود التجارية، تأسيس الشركات والتصفية، وهيكلة المحافظ والاستثمارات العقارية.</p>
           </div>
-        </a>
+        </div>
+        <div class="service-card fade-up" id="pdpl">
+          <div class="service-card-inner">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>حماية البيانات الشخصية (PDPL)</h3>
+            <p>تقييم الامتثال وتحليل الفجوات، خدمة مسؤول حماية بيانات خارجي (DPO)، والاستجابة لحوادث تسريب البيانات ضمن المهلة النظامية.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -855,7 +853,7 @@
       <div class="section-header fade-up">
         <h2>لماذا <span>الرويمي</span>؟</h2>
         <div class="gold-line gold-line-center"></div>
-        <p style="margin-top:16px;">نتميز بمعايير عالية تضمن لك أفضل تمثيل قانوني</p>
+        <p style="margin-top:16px;">تخصص عقاري واضح، ومهل نظامية نلتزم بها قبل أن تفوت</p>
       </div>
       <div class="why-grid">
         <div class="why-card fade-up">
@@ -863,21 +861,21 @@
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>سرية تامة</h3>
-          <p>نلتزم بأعلى معايير السرية في التعامل مع ملفات موكلينا وبياناتهم الشخصية</p>
+          <p>ملفات الملكية والصكوك وبيانات موكلينا تُدار بأعلى معايير السرية والحفظ</p>
         </div>
         <div class="why-card fade-up">
           <div class="why-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>استجابة سريعة</h3>
-          <p>فريق متاح على مدار الساعة للرد على استفساراتكم ومتابعة قضاياكم بشكل مستمر</p>
+          <h3>التزام بالمهل النظامية</h3>
+          <p>مهلة الاعتراض ٦٠ يوماً لا تنتظر — نبدأ الفحص فور تواصلك ونتابع الملف أولاً بأول</p>
         </div>
         <div class="why-card fade-up">
           <div class="why-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>تمثيل متخصص</h3>
-          <p>ترافع أمام جميع درجات المحاكم السعودية مع خبرة عميقة في القضايا التجارية والعقارية</p>
+          <h3>تخصص عقاري</h3>
+          <p>خبرة عميقة في المنازعات العقارية ورسوم الأراضي البيضاء، وترافع أمام المحاكم واللجان وديوان المظالم</p>
         </div>
       </div>
     </div>
@@ -899,16 +897,16 @@
           <div class="title">محامية ومستشارة قانونية</div>
         </div>
         <div class="lawyer-bio fade-up">
-          <p class="lead">محامية سعودية تجمع بين الخبرة القانونية والفهم العملي لتحديات الأعمال</p>
-          <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتميز بخبرة متخصصة في الترافع أمام المحاكم السعودية بمختلف درجاتها، مع التزام تام بتحقيق أفضل النتائج لموكليها.</p>
-          <p>تقدم استشارات متخصصة في حماية البيانات الشخصية (PDPL) والامتثال التنظيمي، مع تركيز خاص على المؤسسات المالية. تؤمن بأن العدالة حق للجميع.</p>
+          <p class="lead">محامية سعودية تجمع بين التخصص العقاري والفهم العملي لتحديات الملكية والاستثمار</p>
+          <p>محامية سعودية مرخصة ومؤسسة مكتب الرويمي للمحاماة والتوثيق. تتركز ممارستها في المنازعات العقارية ورسوم الأراضي البيضاء والعقارات الشاغرة، مع ترافع أمام المحاكم السعودية بمختلف درجاتها واللجان المختصة وديوان المظالم.</p>
+          <p>وتقدّم إلى جانب ذلك استشارات في هيكلة المحافظ العقارية والعقود، وفي حماية البيانات الشخصية (PDPL) والامتثال التنظيمي. تؤمن بأن العدالة حق للجميع.</p>
           <ul class="qualifications">
             <li class="qual-item"><span class="qual-dot"></span>محامية مرخصة من وزارة العدل</li>
-            <li class="qual-item"><span class="qual-dot"></span>الترافع أمام جميع درجات التقاضي</li>
-            <li class="qual-item"><span class="qual-dot"></span>متخصصة في حماية البيانات (PDPL)</li>
-            <li class="qual-item"><span class="qual-dot"></span>القضايا التجارية والعقارية</li>
-            <li class="qual-item"><span class="qual-dot"></span>صياغة العقود والاستشارات</li>
-            <li class="qual-item"><span class="qual-dot"></span>مسؤول حماية بيانات خارجي (DPO)</li>
+            <li class="qual-item"><span class="qual-dot"></span>المنازعات العقارية والملكية</li>
+            <li class="qual-item"><span class="qual-dot"></span>رسوم الأراضي البيضاء والعقارات الشاغرة</li>
+            <li class="qual-item"><span class="qual-dot"></span>الترافع أمام المحاكم واللجان وديوان المظالم</li>
+            <li class="qual-item"><span class="qual-dot"></span>صياغة العقود العقارية والتوثيق</li>
+            <li class="qual-item"><span class="qual-dot"></span>حماية البيانات الشخصية (PDPL) و DPO</li>
             <li class="qual-item"><span class="qual-dot"></span>عضو الهيئة السعودية للمحامين</li>
           </ul>
         </div>
@@ -921,7 +919,7 @@
     <div class="contact-inner">
       <div class="contact-card fade-up">
         <h2>تواصل معنا</h2>
-        <p>نسعد بخدمتكم والإجابة على استفساراتكم القانونية</p>
+        <p>نسعد بخدمتكم — وفحص وضع أرضك أو عقارك مبدئياً دون التزام</p>
         <div class="contact-buttons">
           <a href="https://wa.me/966505557277" class="btn-whatsapp" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
